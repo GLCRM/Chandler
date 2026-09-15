@@ -223,7 +223,7 @@ Ces points ne peuvent pas être résolus à partir des documents du dépôt ; il
 6. Secteurs « non touchés » C et L présents dans les activités du tableau CISSS (C-40, K6) (architectes, CISSS).
 7. Contradiction interne D4/D5 sur la caméra d'urgence (« Aucun arrêt » vs dépose temporaire, ME-145) (WSP).
 8. Six identifiants non déterminables (AR-PLN-056, AR-PLN-079, ME-062, ME-141, ME-143, CI-TAB-013).
-9. Nature exacte et complète des interventions sur l'unité de ventilation de l'hémodialyse/laboratoire du bassin 16 : conduits enlevés et relocalisés temporairement, unité en fonction ; documents WSP à compléter, notes 35 et 37 des feuilles 702 à 704 à aligner (C-41, R-41 ; complément §10).
+9. Nature exacte des interventions sur les conduits de l'unité de ventilation de l'hémodialyse/laboratoire du bassin 16 (tracé temporaire, nouveaux conduits, basculements, interruptions) et séquence de la passerelle : documents WSP à compléter (Z-29 ; complément §10).
 
 ---
 
@@ -250,13 +250,14 @@ Corrections au registre 02 : b410c90 (renvois orphelins), 4c20525 (lignes AR-PLN
 
 Constat postérieur à la vérification, déclenché par une question de GLCRM sur « l'appareil de la toiture bassin 16 ». La feuille 301 numérote les toitures « BASSIN #1 » à « #23 » ; le bassin 16 est la bande nord au pied de la face nord de la tour, entre les axes 6 et 8, avec renvoi « voir plan du niveau 200 ». L'appareil qui s'y trouve est l'unité de ventilation extérieure de l'hémodialyse/laboratoire (D4 ME014, vues agrandies aux axes 6 à 8 ; passerelle et escalier P-01 de la feuille 704) `[lecture]`, identification confirmée par GLCRM.
 
-Trois défauts corrigés :
+Ce que les documents disent de cette unité est cohérent : D4 (ME004(D) note D9, ME014 notes D1 à D4) et D5 (ligne N-F-V-005) la conservent en place et en fonction, remplacent les conduits du secteur hémodialyse par des conduits temporaires puis définitifs, et enlèvent temporairement la passerelle d'accès. GLCRM précise la séquence : conduits enlevés et relocalisés temporairement pour le parement, passerelle enlevée avant et réinstallée après la modification des conduits, unité maintenue en fonction avec interruption temporaire. Ce qui n'est écrit nulle part : le tracé et la forme des conduits temporaires et définitifs, la séquence de basculement et les fenêtres d'interruption au-delà de « une journée, un conduit à la fois, dimanche hors période estivale » (ME-051). WSP doit définir la nature exacte et complète des interventions ; ses documents ne sont pas terminés. Consigné en Z-29 du registre, en §6 de 03 et sur la planche 13 du cahier, marqué `[à confirmer]`.
 
-1. **Registre 02.** AR-PLN-070 citait la « note 33 » des feuilles 702 à 704 ; la note visée est la 35 (démantèlement temporaire) et la 37 (réinstallation). La contradiction entre D2 (« unité de mécanique et son support à démanteler temporairement ») et D4/D5 (« unité à conserver », « à conserver en place et en fonction », conduits temporaires et passerelle seulement) n'était pas relevée : ajout de C-41 et du renvoi R-41 (documents d'ingénierie WSP non émis pour cette intervention).
-2. **Plan 03.** AR-PLN-070 était classé transversal par la règle « toitures et entretoits : toiture de chaque phase », alors que la note vise un appareil précis sur une face précise. Réaffecté à 2.N et 3.N (découpage A) et C.2 (découpage B) ; fiches 2.N et 3.N, §0.4, §2.6, §2.8, §3.6 et §6 amendés ; annexe A régénérée. Le décompte T du §2.1 ci-dessus (498) passe à 497 ; les autres décomptes de ce document sont ceux de la vérification initiale et ne sont pas recalculés.
-3. **Cahier graphique.** Le bassin 16 est nommé sur le plan clé, le point fixe 4 et l'étiquette T5 sont placés sur l'unité, la décision « nature exacte des interventions, WSP » est ajoutée à la planche de comparaison.
+Deux défauts du registre corrigés au passage :
 
-Ce que les documents ne disent pas et qui reste à obtenir de WSP : la forme et le tracé des conduits temporaires et des nouveaux conduits, la séquence de basculement, les fenêtres d'interruption autres que « dimanche hors période estivale » (ME-051). Ces éléments sont portés en §6 de 03 et sur la planche 13 du cahier, marqués `[à confirmer]`.
+1. AR-PLN-070 citait la « note 33 » des feuilles 702 à 704 ; les bulles des notes 35 (démantèlement temporaire) et 37 (réinstallation) sont accrochées au garde-corps G-02 de la feuille 703, où un petit appareil sur support est dessiné et photographié : c'est le bi-bloc de la salle d'observation de l'urgence (ME-090, ME-085), façade sud `[lecture]`, et non l'unité d'hémodialyse. Ligne corrigée ; renvoi R-41 ajouté (les « documents d'ingénierie » visés sont ME001(D) note D3 : présent).
+2. AR-PLN-070 était classé transversal par la règle « toitures et entretoits : toiture de chaque phase », alors que la note vise un appareil précis. Réaffecté à 3.S (découpage A) et B-A (découpage B), comme ME-085 et ME-090 ; fiche 3.S amendée, annexe A régénérée. Le décompte T du §2.1 ci-dessus (498) passe à 497 ; les autres décomptes de ce document ne sont pas recalculés.
+
+Une première intégration, le même jour, avait rattaché AR-PLN-070 à l'unité d'hémodialyse et créé une contradiction C-41 entre D2 et D4/D5 ; la lecture des bulles de la feuille 703 l'infirme. C-41 a été retirée du registre avant diffusion ; la numérotation des contradictions s'arrête à C-40.
 
 ---
 
@@ -688,7 +689,7 @@ Colonnes : phases des découpages A et B (codes du §0.2 de 03) ; sections de 03
 | AR-PLN-067 | Échelles démontées, à protéger, réinstallées après modification | préalable (séquence /… | T | T | T (§1.2) | règle spécifique |
 | AR-PLN-068 | Échelle existante à démonter/entreposer, interventions AVANT réinstallation | préalable | T | T | T (§1.2) | règle spécifique |
 | AR-PLN-069 | Percements étanchés après retrait des garde-corps | préalable (séquence /… | T | T | T (§1.2) | règle spécifique |
-| AR-PLN-070 | Unité de mécanique démantelée temporairement | préalable (séquence /… | 2.N, 3.N | C.2 | Phase 2.N, Phase 3.N, Phase B-C, matrice ME, §6 | règle spécifique (complément §10) |
+| AR-PLN-070 | Unité de mécanique démantelée temporairement | préalable (séquence /… | 3.S | A | Phase 3.S, Phase B-A | règle spécifique (complément §10) |
 | AR-PLN-071 | Plexiglas de protection à enlever — secteur psychiatrie uniquement | autre (autre (portée… | 2 | C.4 | Phase 2, Phase 2.O, Phase B-C | règle spécifique |
 | AR-PLN-072 | Garde-corps existant à conserver et protéger | interdiction | 1, 3 | B | Phase 1, Phase B-B | règle spécifique |
 | AR-PLN-073 | Éléments existants du site à conserver et protéger (série) | autre (autre (protect… | T | T | T (§1.2) | règle par défaut (T) |

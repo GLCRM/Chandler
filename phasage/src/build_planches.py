@@ -111,7 +111,7 @@ CALLOUTS = [
  ('T2', '1', 'A.6', 'Local R-22 : conduits EMT relocalisés avant les renforts A4-A6 (classe IV, J/S)', 'ME-108, 111 ; CI-TAB-010', (692, 522), (720, 613), 'est'),
  ('T3', '1', 'A', 'Salle des serveurs RC : arrêt court, semaine, hors été ; bi-bloc LG remis en marche', 'ME-088, 086', (930, 445), (985, 470), 'est'),
  ('T4', '1', 'A.1', 'IRM mobile : sorties d\'arrosage protégées, alcôve dans le revêtement', 'ME-116', (928, 372), (985, 320), 'est'),
- ('T5', '2.N', 'C.2', 'Hémodialyse / labo niv. 200, bassin 16 : unité conservée en place ; conduits enlevés et relocalisés temporairement AVANT démolition, en fonction ; coupures dimanche hors été ; nature exacte à définir par WSP', 'ME-049 à 054 ; AR-PLN-070 ; C-41', (555, 351), (555, 335), 'nord'),
+ ('T5', '2.N', 'C.2', 'Hémodialyse / labo niv. 200, bassin 16 : unité conservée en place ; conduits enlevés et relocalisés temporairement AVANT démolition, en fonction ; coupures dimanche hors été ; passerelle enlevée puis réinstallée après les conduits ; à définir par WSP', 'ME-049 à 054 ; Z-29', (555, 351), (555, 335), 'nord'),
  ('T6', '2.N', 'C.2', 'Chambre 216 : conduit RAV prolongé hors échafaudages', 'ME-057', (540, 352), (640, 235), 'nord'),
  ('T7', '2.E', 'C', 'Hotte de médecine nucléaire : conduit modifié sur toute la hauteur ; arrêt vendredi-dimanche', 'ME-118, 119', (676, 445), (870, 347), 'est'),
  ('T8', '2.S', 'C.4', 'Chambre 307 : démantèlement si inoccupée, conduit prolongé, grillage ; sectionneurs de thermopompes déposés', 'ME-056, 107', (540, 508), (600, 580), 'sud'),
@@ -129,7 +129,7 @@ POINTS_FIXES = [
  ('1', 'Prise d\'air frais du bloc opératoire — 24/7, conduits temporaires', '« Façade ouest (tour) », « toiture ouest » — [à confirmer] tour ou basilaire', 'ME-042 à 048', (272, 440), (205, 465)),
  ('2', 'Évents des autoclaves (sous-sol) — 24/7, relocalisés avant la façade ouest', '« Façade ouest », toiture ; temporaires jusqu\'au coin sud-ouest', 'ME-075 à 079', (257, 475), (205, 495)),
  ('3', 'Centrale d\'air médical — 24/7 ; prise temporaire sur la façade ouest', '« Toiture nord-ouest » — [à confirmer] tour ou basilaire', 'ME-064 à 068', (300, 335), (205, 335)),
- ('4', 'Unité de ventilation hémodialyse, niv. 200 ; conduits relocalisés', 'Bassin 16 (feuille 301), basilaire nord [lecture] ; WSP à compléter', 'ME-049 à 054 ; AR-PLN-070', (555, 351), (555, 335)),
+ ('4', 'Unité de ventilation hémodialyse, niv. 200 ; conduits relocalisés', 'Bassin 16 (feuille 301), basilaire nord [lecture] ; WSP à compléter', 'ME-049 à 054 ; Z-29', (555, 351), (555, 335)),
  ('5', 'IRM — métal interdit quand l\'IRM est en service ; volets coupe-feu', 'Zone F (RC)', 'AR-PLN-009 ; ME-010, 109, 110', (705, 560), (705, 613)),
  ('6', 'Urgence (RC, zone H) et quai des ambulances — gicleurs 2 × 2 h', '« Entrée ambulance sud » (D4, D5) contre « zone ambulance (nord) » (D2) — [lecture] garage ▲▼', 'ME-006 à 008, 145 à 147 ; AR-PLN-004, 018', (532, 556), (585, 613)),
  ('7', 'Entrée principale et marquise — accès maintenu, trois configurations', 'Zone H ; détail 2 de la feuille 002 — [lecture] marquise au sud', 'AR-PLN-008, 019 ; CI-TAB-014', (420, 550), (450, 613)),
@@ -151,7 +151,7 @@ SYSTEMES = [  # matrice phase x système (03 §2.8 corrigé) — codes courts : 
  ('PAF bloc opératoire, glycol (ME-042 à 048, 084)', {'2.O': 'P? C nuit', '3.O': 'P?', '4': 'mise en serv.'}),
  ('Évents d\'autoclaves, câbles chauffants (ME-075 à 083)', {'2.O': 'P?', '3.O': 'C→P→M'}),
  ('Air médical (ME-064 à 074)', {'2.N': 'M?', '2.O': 'M?', '3.N': 'P+cert.', '3.O': 'P→M', '4': 'cert.'}),
- ('Hémodialyse / labo, bassin 16 (ME-049 à 054, AR-PLN-070)', {'2.N': 'P ; C dim.', '2.O': 'P ; C dim.'}),
+ ('Hémodialyse / labo, bassin 16 (ME-049 à 054)', {'2.N': 'P ; C dim.', '2.O': 'P ; C dim.'}),
  ('Chambres 216 et 307 (ME-057, 056)', {'2.N': 'P (216)', '2.S': 'C→P (307)'}),
  ('Tour, face non écrite : bi-bloc 203 (ME-087), chambre 315 (ME-058), service alimentaire SS (CI-TAB-005)', {'2.N': 'C? I?', '2.E': 'C? I?', '2.S': 'C? I?', '2.O': 'C? I?'}),
  ('Hotte de médecine nucléaire (ME-117 à 119)', {'2.E': 'C→P'}),
@@ -167,7 +167,7 @@ SYSTEMES_B = [  # 03 §3.6
  ('PAF bloc opératoire, glycol (ME-042 à 048, 084)', {'B-A': 'P?', 'B-B': 'P?', 'B-C': 'P (« tour »)', '4': 'mise en serv.'}),
  ('Évents d\'autoclaves, câbles chauffants (ME-075 à 083)', {'B-A': 'P?', 'B-B': 'P ; C nuit ; hors hiver'}),
  ('Air médical (ME-064 à 074)', {'B-B': 'P+cert. (tour ?)', 'B-C': 'M?', '4': 'cert.'}),
- ('Hémodialyse / labo, bassin 16 (ME-049 à 054, AR-PLN-070)', {'B-C': 'P ; C dim. (C.2)'}),
+ ('Hémodialyse / labo, bassin 16 (ME-049 à 054)', {'B-C': 'P ; C dim. (C.2)'}),
  ('Chambres 216 et 307 (ME-057, 056)', {'B-C': 'P (C.2) ; C→P (C.4)'}),
  ('Tour : bi-bloc 203 (ME-087), chambre 315 (ME-058)', {'B-C': 'C semaine (C.2) ; I (C.4)'}),
  ('Hotte de médecine nucléaire (ME-117 à 119)', {'B-C': 'C→P'}),
@@ -414,7 +414,7 @@ def planche_comparaison(num, total):
            ['Secteurs « non touchés » C (local R-22) et L (fenêtres) présents dans les activités du tableau', 'Phase 1 ; A.6', 'Architectes et CISSS', 'C-40 ; 03 K6'],
            ['Caméra d\'urgence : « aucun arrêt » (D5) contre dépose temporaire (D4, ME-145)', 'T14 ; 3.S ou A.1', 'WSP', 'Z-06 ; 03 §2.8'],
            ['Sous-phases absentes du tableau CISSS (C.1, C.3, B.1.1) et lignes sans sous-phase (échelles, issue no 3)', 'Option B', 'CISSS', 'CI-TAB-023, 026 ; C-30'],
-           ['Unité de ventilation hémodialyse/labo du bassin 16 : nature exacte des interventions (conduits enlevés et relocalisés temporairement, nouveaux conduits, interruptions) ; notes 35 et 37 des feuilles 702 à 704 (« unité et son support ») à aligner', 'T5 ; 2.N, 3.N ; C.2', 'WSP (documents à compléter) ; architectes', 'C-41, R-41 ; 03 §6']]
+           ['Unité de ventilation hémodialyse/labo du bassin 16 : tracé et forme des conduits temporaires et définitifs, basculements, interruptions ; passerelle enlevée avant et réinstallée après la modification des conduits', 'T5 ; 2.N ; C.2', 'WSP (documents à compléter)', 'Z-29 ; 03 §6']]
     decb = box(808, 404, 784, BOT - 404, table(dec, ['350px', '170px', '120px', '120px']), 'Décisions à obtenir, communes à toutes les options', 'dec')
     conv = box(40, 622, 760, BOT - 622, '<div class="txt"><b>Ce que le cahier ne fait pas.</b> Aucune durée ni calendrier : les repères « ±5 / ±8 / ±4 mois » de la feuille 010 sont des indications des architectes (C-34). Aucune contrainte ajoutée au registre : chaque élément dessiné cite sa ligne. Les contours des zones, les repères d\'élévation et les points fixes sont des superpositions [lecture] sur les rendus des feuilles 010, 011, 001 et 002 ; toute localisation que les documents ne fixent pas est marquée [à confirmer].<br><br><b>Lecture des planches.</b> Planche 0 : site, commune à toutes les options. Pour chaque option : ordre des phases (plan recoloré), installations temporaires et coupures (étiquettes T, matrice), séquence (dépendances, saisons, nouvelle issue, validations CISSS). Registre complet : analyse/02-contraintes.md ; plan de phasage : analyse/03-phasage.md ; vérification : analyse/04-verification.md.</div>', 'Portée et conventions du cahier', 'conv')
     return ('<section class="planche">' + header(num, 'Comparaison des options et recommandation', 'Conflits levés, conflits résiduels, décisions à obtenir et de qui ; option recommandée')
