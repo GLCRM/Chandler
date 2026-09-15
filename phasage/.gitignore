@@ -2,3 +2,5 @@ build/*.png
 build/planches.html
 build/plan.png
 build/implantation.png
+build/debordements.json
+src/__pycache__/

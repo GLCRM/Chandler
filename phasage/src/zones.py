@@ -8,7 +8,7 @@ ZONES = {  # lettre : (polygone en px image, nom court, fonction (légende 010 v
  'B': ([(367,318),(605,318),(605,352),(367,352)], 'Laboratoire', 'Laboratoire (niveau 100, 1990) — basilaire nord 2 étages', '3'),
  'K': ([(605,318),(645,318),(645,352),(605,352)], 'Basilaire nord-est', 'Basilaire nord-est (1974), 1 étage', '3'),
  'A': ([(270,352),(648,352),(648,375),(678,375),(678,415),(648,415),(648,508),(270,508)], 'Tour', 'Tour des chambres (niveaux 200, 300, 400 ; 1974), 4 étages', '2'),
- 'O': ([(243,352),(270,352),(270,508),(243,508)], 'Basilaire ouest', 'Basilaire ouest (1 étage) — sans lettre de zone sur le plan clé', '3'),
+ 'O': ([(243,352),(270,352),(270,508),(243,508)], 'Basilaire ouest', 'Basilaire ouest (1 étage) — lettre « O » attribuée ici [lecture], aucune lettre sur le plan clé', '3'),
  'I': ([(275,508),(305,508),(305,548),(275,548)], 'Basilaire sud-ouest', 'Basilaire sud-ouest (1974), 1 étage', '3'),
  'H': ([(305,508),(555,508),(555,548),(305,548)], 'Chirurgie d\'un jour / urgence', 'Chirurgie d\'un jour (niveau 100, 2005) et urgence (RC) — basilaire sud 2 étages', '3'),
  'G': ([(555,508),(678,508),(678,548),(555,548)], 'Basilaire sud-est', 'Basilaire sud-est (1974), 1 étage', '3'),
