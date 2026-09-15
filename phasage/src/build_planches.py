@@ -56,6 +56,10 @@ def zone_labels():
         else:
             out.append(f'<rect x="{x-10}" y="{y-10}" width="20" height="20" transform="rotate(45 {x} {y})" fill="#fff" stroke="#111" stroke-width="1.3"/>' + txt(x, y + 5, k, 13, 'middle', 'bold'))
     return ''.join(out)
+B16 = [(510,318),(600,318),(600,352),(510,352)]  # bassin 16 de la feuille 301, toiture du basilaire nord portant l'unité d'hémodialyse [lecture]
+def bassin16():
+    x, y = 508 - OFF[0], 311 - OFF[1]
+    return poly(B16, 'none', 0, '#5e1a75', 1.4, '4,3') + txt(x, y, 'bassin 16', 13, 'end', 'normal', '#5e1a75')
 def outlines(): return ''.join(poly(p, 'none', 0, '#111', 1.4) for p, *_ in ZONES.values())
 def set_scale(width):
     global FSCALE; FSCALE = round(940 / width, 3)
@@ -107,7 +111,7 @@ CALLOUTS = [
  ('T2', '1', 'A.6', 'Local R-22 : conduits EMT relocalisés avant les renforts A4-A6 (classe IV, J/S)', 'ME-108, 111 ; CI-TAB-010', (692, 522), (720, 613), 'est'),
  ('T3', '1', 'A', 'Salle des serveurs RC : arrêt court, semaine, hors été ; bi-bloc LG remis en marche', 'ME-088, 086', (930, 445), (985, 470), 'est'),
  ('T4', '1', 'A.1', 'IRM mobile : sorties d\'arrosage protégées, alcôve dans le revêtement', 'ME-116', (928, 372), (985, 320), 'est'),
- ('T5', '2.N', 'C.2', 'Hémodialyse / labo niv. 200 : conduits temporaires AVANT démolition ; coupures dimanche hors été', 'ME-049 à 051', (380, 352), (330, 292), 'nord'),
+ ('T5', '2.N', 'C.2', 'Hémodialyse / labo niv. 200, bassin 16 : unité conservée en place ; conduits enlevés et relocalisés temporairement AVANT démolition, en fonction ; coupures dimanche hors été ; nature exacte à définir par WSP', 'ME-049 à 054 ; AR-PLN-070 ; C-41', (555, 351), (555, 335), 'nord'),
  ('T6', '2.N', 'C.2', 'Chambre 216 : conduit RAV prolongé hors échafaudages', 'ME-057', (540, 352), (640, 235), 'nord'),
  ('T7', '2.E', 'C', 'Hotte de médecine nucléaire : conduit modifié sur toute la hauteur ; arrêt vendredi-dimanche', 'ME-118, 119', (676, 445), (870, 347), 'est'),
  ('T8', '2.S', 'C.4', 'Chambre 307 : démantèlement si inoccupée, conduit prolongé, grillage ; sectionneurs de thermopompes déposés', 'ME-056, 107', (540, 508), (600, 580), 'sud'),
@@ -125,7 +129,7 @@ POINTS_FIXES = [
  ('1', 'Prise d\'air frais du bloc opératoire — 24/7, conduits temporaires', '« Façade ouest (tour) », « toiture ouest » — [à confirmer] tour ou basilaire', 'ME-042 à 048', (272, 440), (205, 465)),
  ('2', 'Évents des autoclaves (sous-sol) — 24/7, relocalisés avant la façade ouest', '« Façade ouest », toiture ; temporaires jusqu\'au coin sud-ouest', 'ME-075 à 079', (257, 475), (205, 495)),
  ('3', 'Centrale d\'air médical — 24/7 ; prise temporaire sur la façade ouest', '« Toiture nord-ouest » — [à confirmer] tour ou basilaire', 'ME-064 à 068', (300, 335), (205, 335)),
- ('4', 'Ventilation hémodialyse / laboratoire, niveau 200 — conduits temporaires', '« Façades nord/ouest » de la tour — [à confirmer] locaux 202-237', 'ME-049 à 054', (380, 356), (330, 292)),
+ ('4', 'Unité de ventilation hémodialyse, niv. 200 ; conduits relocalisés', 'Bassin 16 (feuille 301), basilaire nord [lecture] ; WSP à compléter', 'ME-049 à 054 ; AR-PLN-070', (555, 351), (555, 335)),
  ('5', 'IRM — métal interdit quand l\'IRM est en service ; volets coupe-feu', 'Zone F (RC)', 'AR-PLN-009 ; ME-010, 109, 110', (705, 560), (705, 613)),
  ('6', 'Urgence (RC, zone H) et quai des ambulances — gicleurs 2 × 2 h', '« Entrée ambulance sud » (D4, D5) contre « zone ambulance (nord) » (D2) — [lecture] garage ▲▼', 'ME-006 à 008, 145 à 147 ; AR-PLN-004, 018', (532, 556), (585, 613)),
  ('7', 'Entrée principale et marquise — accès maintenu, trois configurations', 'Zone H ; détail 2 de la feuille 002 — [lecture] marquise au sud', 'AR-PLN-008, 019 ; CI-TAB-014', (420, 550), (450, 613)),
@@ -147,7 +151,7 @@ SYSTEMES = [  # matrice phase x système (03 §2.8 corrigé) — codes courts : 
  ('PAF bloc opératoire, glycol (ME-042 à 048, 084)', {'2.O': 'P? C nuit', '3.O': 'P?', '4': 'mise en serv.'}),
  ('Évents d\'autoclaves, câbles chauffants (ME-075 à 083)', {'2.O': 'P?', '3.O': 'C→P→M'}),
  ('Air médical (ME-064 à 074)', {'2.N': 'M?', '2.O': 'M?', '3.N': 'P+cert.', '3.O': 'P→M', '4': 'cert.'}),
- ('Hémodialyse / labo niv. 200 (ME-049 à 054)', {'2.N': 'P ; C dim.', '2.O': 'P ; C dim.'}),
+ ('Hémodialyse / labo, bassin 16 (ME-049 à 054, AR-PLN-070)', {'2.N': 'P ; C dim.', '2.O': 'P ; C dim.'}),
  ('Chambres 216 et 307 (ME-057, 056)', {'2.N': 'P (216)', '2.S': 'C→P (307)'}),
  ('Tour, face non écrite : bi-bloc 203 (ME-087), chambre 315 (ME-058), service alimentaire SS (CI-TAB-005)', {'2.N': 'C? I?', '2.E': 'C? I?', '2.S': 'C? I?', '2.O': 'C? I?'}),
  ('Hotte de médecine nucléaire (ME-117 à 119)', {'2.E': 'C→P'}),
@@ -163,7 +167,7 @@ SYSTEMES_B = [  # 03 §3.6
  ('PAF bloc opératoire, glycol (ME-042 à 048, 084)', {'B-A': 'P?', 'B-B': 'P?', 'B-C': 'P (« tour »)', '4': 'mise en serv.'}),
  ('Évents d\'autoclaves, câbles chauffants (ME-075 à 083)', {'B-A': 'P?', 'B-B': 'P ; C nuit ; hors hiver'}),
  ('Air médical (ME-064 à 074)', {'B-B': 'P+cert. (tour ?)', 'B-C': 'M?', '4': 'cert.'}),
- ('Hémodialyse / labo niv. 200 (ME-049 à 054)', {'B-C': 'P ; C dim. (C.2)'}),
+ ('Hémodialyse / labo, bassin 16 (ME-049 à 054, AR-PLN-070)', {'B-C': 'P ; C dim. (C.2)'}),
  ('Chambres 216 et 307 (ME-057, 056)', {'B-C': 'P (C.2) ; C→P (C.4)'}),
  ('Tour : bi-bloc 203 (ME-087), chambre 315 (ME-058)', {'B-C': 'C semaine (C.2) ; I (C.4)'}),
  ('Hotte de médecine nucléaire (ME-117 à 119)', {'B-C': 'C→P'}),
@@ -232,14 +236,14 @@ def chips(opt):
 
 # ------------------------------------------------------------------ planches
 def planche0(num, total):
-    inner = [outlines(), zone_labels()]
+    inner = [outlines(), zone_labels(), bassin16()]
     for l, (anc, d, name) in ELEV.items(): inner.append(view_arrow(l, anc, d))
     for no, lib, loc, ids, (px, py), (lx, ly) in POINTS_FIXES:
         x, y = px - OFF[0], py - OFF[1]; bx, by = lx - OFF[0], ly - OFF[1]
         inner += [leader(bx, by, x, y, '#8e24aa', '2,2'), dot(x, y, '#8e24aa'), badge(bx, by, no, '#8e24aa', 13, 13)]
     inner.append(amb_diverg())
     plan = plan_figure(40, 96, ''.join(inner))
-    cap = '<div class="cap" style="left:40px;top:606px;width:940px">Fond : feuille 010 (D2), plan clé « Zones des travaux », couleurs des architectes (bleu phase 1, vert phase 2, orange phase 3, hachures « secteur non touché ») ; nord en haut à droite. Contours des zones, lettre O du basilaire ouest, repères d\'élévation A à I (feuille 011) et points fixes 1 à 16 : superposés [lecture] ; le numéro pointe l\'emplacement écrit ou lu, le tableau de droite donne la ligne du registre.</div>'
+    cap = '<div class="cap" style="left:40px;top:606px;width:940px">Fond : feuille 010 (D2), plan clé « Zones des travaux », couleurs des architectes (bleu phase 1, vert phase 2, orange phase 3, hachures « secteur non touché ») ; nord en haut à droite. Contours des zones, lettre O, pointillé « bassin 16 » (toiture de la feuille 301 portant l\'unité d\'hémodialyse), repères d\'élévation A à I (feuille 011) et points fixes 1 à 16 : superposés [lecture] ; le tableau de droite donne la ligne du registre.</div>'
     rows = [['Zone', 'Fonction (légende 010, via 01 §8.5)', 'Phase du plan clé [lecture]']]
     for k in 'ABCDEFGHIJKL':
         p, short, fn, ph = ZONES[k]; rows.append([f'<b>{k}</b>', FN_COURT[k], {'1': 'Phase 1', '2': 'Phase 2', '3': 'Phase 3', 'non touché': 'Secteur non touché'}[ph]])
@@ -250,12 +254,12 @@ def planche0(num, total):
     rows = [['Élév.', 'Titre (feuille 011)', 'Face vue [lecture]']]
     for l, (anc, d, name) in ELEV.items(): rows.append([f'<b>{l}</b>', name, faces[l]])
     elev_tab = box(608, 656, 372, BOT - 656, table(rows, ['38px', '142px', '172px']) + '<div class="note">« ? » : à trancher par les architectes (planche 13).</div>', 'Repères d\'élévation A à I (plan clé de la 011)', 'p0-elev')
-    impl = (f'<div class="box" id="p0-impl" style="left:1000px;top:96px;width:592px;height:240px"><div class="bt">Implantation existante (feuille 001) : issues et accès repérés par les architectes</div>'
-            f'<img src="implantation.png" style="position:absolute;left:8px;top:24px;width:576px;max-height:144px;object-fit:contain">'
-            f'<div class="note" style="position:absolute;left:8px;top:170px;width:576px">Légende 001/002 : ▲ issue ou accès au bâtiment protégé durant le chantier (AR-PLN-016) ; △ porte de garage ; borne-fontaine accessible en tout temps (AR-PLN-001) ; issues et chemins d\'évacuation maintenus à 1650 mm (AR-PLN-006) ; portes hors service repérées (AR-PLN-007) ; plan d\'action avant tout travail près d\'une issue (AR-PLN-011).</div></div>')
+    impl = (f'<div class="box" id="p0-impl" style="left:1000px;top:96px;width:592px;height:230px"><div class="bt">Implantation existante (feuille 001) : issues et accès repérés par les architectes</div>'
+            f'<img src="implantation.png" style="position:absolute;left:8px;top:24px;width:576px;max-height:134px;object-fit:contain">'
+            f'<div class="note" style="position:absolute;left:8px;top:160px;width:576px">Légende 001/002 : ▲ issue ou accès au bâtiment protégé durant le chantier (AR-PLN-016) ; △ porte de garage ; borne-fontaine accessible en tout temps (AR-PLN-001) ; issues et chemins d\'évacuation maintenus à 1650 mm (AR-PLN-006) ; portes hors service repérées (AR-PLN-007) ; plan d\'action avant tout travail près d\'une issue (AR-PLN-011).</div></div>')
     rows = [['No', 'Point fixe ou accès à maintenir', 'Localisation écrite et marque', 'Registre']]
     for no, lib, loc, ids, _, _ in POINTS_FIXES: rows.append([f'<b>{no}</b>', lib, loc, ids])
-    pf = box(1000, 342, 592, BOT - 342, table(rows, ['28px', '218px', '210px', '116px']), 'Points fixes 24/7, unités critiques et accès (registre 02)', 'p0-pf')
+    pf = box(1000, 332, 592, BOT - 332, table(rows, ['28px', '218px', '210px', '116px']), 'Points fixes 24/7, unités critiques et accès (registre 02)', 'p0-pf')
     return ('<section class="planche">' + header(num, 'Lecture du site', 'Zones A à L et O, repères d\'élévation A à I, points fixes 24/7 et accès à maintenir — planche commune à toutes les options')
             + plan + cap + zones_tab + elev_tab + impl + pf + footer(num, total, 'D2 feuilles 001, 002, 010, 011 (rendus 200 ppp) ; analyse/01-inventaire.md §8.5 ; analyse/02-contraintes.md ; analyse/03-phasage.md §2.1, §6.') + '</section>')
 
@@ -300,7 +304,7 @@ def planche_ordre(opt, num, total):
 def planche_installations(opt, num, total):
     o = OPTIONS[opt]; is_b = opt == 'B'
     set_scale(780)
-    inner = [option_fill_layer(opt), zone_labels()]
+    inner = [option_fill_layer(opt), zone_labels(), bassin16()]
     inner.append(poly([(268,352),(272,352),(272,508),(268,508)], '#8e24aa', 0.9, 'none', 0))
     inner.append(poly([(243,335),(272,335),(272,352),(243,352)], 'url(#hatchm)', 1, '#8e24aa', 1.2))
     inner.append(poly([(243,352),(250,352),(250,548),(243,548)], 'url(#hatchm)', 1, '#8e24aa', 1))
@@ -309,7 +313,7 @@ def planche_installations(opt, num, total):
         inner += [leader(bx, by, x, y, '#8e24aa', '2,2'), dot(x, y, '#8e24aa'), tag(bx, by, code)]
     inner.append(amb_diverg()); inner.append(diverg(272 - OFF[0] - 22, 440 - OFF[1] - 30, 13))
     plan = plan_figure(40, 96, ''.join(inner), width=780, dim=0.6); set_scale(940)
-    cap = '<div class="cap" style="left:832px;top:96px;width:148px">Étiquettes T1 à T16 (magenta) : installations et mesures temporaires ; le point marque la face écrite au registre ; identifiants au tableau de droite. Hachures magenta : façade ouest, où le registre place l\'air médical temporaire (ME-065), les conduits du bloc opératoire (ME-047) et les évents d\'autoclaves (ME-075). Pictogramme près de T9 : tour ou basilaire non écrit.</div>'
+    cap = '<div class="cap" style="left:832px;top:96px;width:148px">Étiquettes T1 à T16 (magenta) : installations et mesures temporaires ; le point marque la face écrite au registre ; identifiants au tableau de droite. Hachures magenta : façade ouest, où le registre place l\'air médical temporaire (ME-065), les conduits du bloc opératoire (ME-047) et les évents d\'autoclaves (ME-075). Pictogramme près de T9 : tour ou basilaire non écrit. Pointillé « bassin 16 » : toiture (feuille 301) portant l\'unité d\'hémodialyse, conservée en place ; T5 = ses conduits relocalisés.</div>'
     # matrice
     cols = ['0'] + o['ordre'] + ['4']
     systems = SYSTEMES_B if is_b else SYSTEMES
@@ -409,7 +413,8 @@ def planche_comparaison(num, total):
            ['Régime PCI applicable (procédure du CISSS de la Gaspésie absente), classes attribuées, sens de « J », « S », « J/S », « période estivale »', 'Toutes les activités classées ; K3, K5', 'CISSS', 'C-01, C-02, Z-01, Z-05, Z-10'],
            ['Secteurs « non touchés » C (local R-22) et L (fenêtres) présents dans les activités du tableau', 'Phase 1 ; A.6', 'Architectes et CISSS', 'C-40 ; 03 K6'],
            ['Caméra d\'urgence : « aucun arrêt » (D5) contre dépose temporaire (D4, ME-145)', 'T14 ; 3.S ou A.1', 'WSP', 'Z-06 ; 03 §2.8'],
-           ['Sous-phases absentes du tableau CISSS (C.1, C.3, B.1.1) et lignes sans sous-phase (échelles, issue no 3)', 'Option B', 'CISSS', 'CI-TAB-023, 026 ; C-30']]
+           ['Sous-phases absentes du tableau CISSS (C.1, C.3, B.1.1) et lignes sans sous-phase (échelles, issue no 3)', 'Option B', 'CISSS', 'CI-TAB-023, 026 ; C-30'],
+           ['Unité de ventilation hémodialyse/labo du bassin 16 : nature exacte des interventions (conduits enlevés et relocalisés temporairement, nouveaux conduits, interruptions) ; notes 35 et 37 des feuilles 702 à 704 (« unité et son support ») à aligner', 'T5 ; 2.N, 3.N ; C.2', 'WSP (documents à compléter) ; architectes', 'C-41, R-41 ; 03 §6']]
     decb = box(808, 404, 784, BOT - 404, table(dec, ['350px', '170px', '120px', '120px']), 'Décisions à obtenir, communes à toutes les options', 'dec')
     conv = box(40, 622, 760, BOT - 622, '<div class="txt"><b>Ce que le cahier ne fait pas.</b> Aucune durée ni calendrier : les repères « ±5 / ±8 / ±4 mois » de la feuille 010 sont des indications des architectes (C-34). Aucune contrainte ajoutée au registre : chaque élément dessiné cite sa ligne. Les contours des zones, les repères d\'élévation et les points fixes sont des superpositions [lecture] sur les rendus des feuilles 010, 011, 001 et 002 ; toute localisation que les documents ne fixent pas est marquée [à confirmer].<br><br><b>Lecture des planches.</b> Planche 0 : site, commune à toutes les options. Pour chaque option : ordre des phases (plan recoloré), installations temporaires et coupures (étiquettes T, matrice), séquence (dépendances, saisons, nouvelle issue, validations CISSS). Registre complet : analyse/02-contraintes.md ; plan de phasage : analyse/03-phasage.md ; vérification : analyse/04-verification.md.</div>', 'Portée et conventions du cahier', 'conv')
     return ('<section class="planche">' + header(num, 'Comparaison des options et recommandation', 'Conflits levés, conflits résiduels, décisions à obtenir et de qui ; option recommandée')
