@@ -194,12 +194,12 @@ AR-PLN-009, AR-PLN-010, AR-PLN-021, AR-PLN-047, AR-PLN-048, AR-PLN-050, AR-PLN-0
 
 **Zones.** A (tour des chambres, niveaux 200 à 400) ; toiture de la tour ; sous-sol pour les prises d'air du service alimentaire, que le tableau CISSS rattache à la zone A (CI-TAB-005, D11 L5 à L7 `[tel qu'écrit]`).
 
-**Portée commune aux quatre faces.** Enveloppe de la tour sur quatre niveaux ; fenêtres en 2 étapes (AR-PLN-046) ; étapes CISSS « cadrage et toile » niveaux 2, 3 et 4 en classe III, horaire « J » (CI-TAB-024, 027, 029) ; volets coupe-feu niveaux 200 à 400 (AR-PLN-057) ; plexiglas de protection à enlever au secteur psychiatrie, niveau 300 uniquement (AR-PLN-071) ; travaux bruyants et vibrations aux locaux 209/210/211/236-237 et 309 à 324 à coordonner (CI-TAB-025, 028 ; C-30) ; soins intensifs, chambre 315 : apport d'air frais supplémentaire maintenu (ME-058, face non écrite) ; échafaudage de quatre étages sur les toitures du basilaire : attestation scellée, capacités des toitures, toile (ST-023 à 026 ; CI-TAB-004 ; AR-DEV-172) ; prises d'air du service alimentaire au sous-sol, classe IV, horaire « S » (CI-TAB-005), registre motorisé relocalisé pour le registre coupe-feu (ME-029, ME-025).
+**Portée commune aux quatre faces.** Enveloppe de la tour sur quatre niveaux ; fenêtres en 2 étapes (AR-PLN-046) ; étapes CISSS « cadrage et toile » niveaux 2, 3 et 4 en classe III, horaire « J » (CI-TAB-024, 027, 029) ; volets coupe-feu niveaux 200 à 400 (AR-PLN-057) ; plexiglas de protection à enlever au secteur psychiatrie, niveau 300 uniquement (AR-PLN-071) ; travaux bruyants et vibrations aux locaux 209/210/211/236-237 et 309 à 324 à coordonner (CI-TAB-025, 028 ; C-30) ; soins intensifs, chambre 315 : apport d'air frais supplémentaire maintenu, intervention « nuit/jour si aucune chambre occupée » (ME-058 ; face non écrite en toutes lettres, nord selon la ligne D5 N-F-V-009, §6) ; échafaudage de quatre étages sur les toitures du basilaire : attestation scellée, capacités des toitures, toile (ST-023 à 026 ; CI-TAB-004 ; AR-DEV-172) ; prises d'air du service alimentaire au sous-sol, classe IV, horaire « S » (CI-TAB-005), registre motorisé relocalisé pour le registre coupe-feu (ME-029, ME-025).
 
 **Ordre des faces.** Aucun texte n'impose l'ordre des quatre faces de la tour. Seules contraintes écrites : conduits temporaires de l'hémodialyse/laboratoire **avant** la démolition des façades nord et ouest du niveau 200 (ME-049) ; conduit de la hotte de médecine nucléaire modifié sur toute la hauteur avant la façade est (ME-118). Ordre de référence `[choix]` : 2.N → 2.E → 2.S → 2.O ; toute permutation respectant les deux règles ci-dessus est admissible.
 
 #### 2.3.1 Sous-phase 2.N — face nord
-- **Portée propre.** Chambre à pression négative 216 : prolongation temporaire du conduit d'évacuation hors des échafaudages (ME-057). Hémodialyse et laboratoire niveau 200 : unité de ventilation maintenue par conduits temporaires d'alimentation et de retour installés **avant** la démolition (ME-049) ; coupures d'une journée, un conduit à la fois, le dimanche, hors période estivale, selon l'horaire du propriétaire (ME-050, 051 ; R-21) ; point d'entrée en toiture conservé, étanchéité refaite en fin (ME-052) ; manchon selon G004 (ME-053) ; passerelle d'aluminium enlevée et modifiée (ME-054) ; bi-bloc de la salle de traitement d'eau 203 : arrêt court hors été (ME-087).
+- **Portée propre.** Chambre à pression négative 216 : prolongation temporaire du conduit d'évacuation hors des échafaudages (ME-057). Hémodialyse et laboratoire niveau 200 : unité de ventilation maintenue par conduits temporaires d'alimentation et de retour installés **avant** la démolition (ME-049) ; coupures d'une journée, un conduit à la fois, le dimanche, hors période estivale, selon l'horaire du propriétaire (ME-050, 051 ; R-21) ; point d'entrée en toiture conservé, étanchéité refaite en fin (ME-052) ; manchon selon G004 (ME-053) ; passerelle d'aluminium enlevée et modifiée (ME-054) ; bi-bloc de la salle de traitement d'eau 203 : arrêt de courte durée, en semaine, hors période estivale (ME-087 ; façade non écrite, est selon la ligne D5 E-G-V-003, §6).
 - **Préalables.** Conduits temporaires hémodialyse en place (ME-049) ; horaire des coupures convenu avec le propriétaire (ME-050) ; fenêtre hors période estivale (ME-051) : voir K3.
 - **IDs.** ME-049 à 054, ME-057, ME-080, ME-096, ME-120 à 123 ; ST-037.
 - **Mesures transitoires.** Conduits temporaires d'air frais (ME-049) ; conduit RAV prolongé (ME-057) ; supports temporaires calculés (AR-DEV-153).
@@ -213,9 +213,10 @@ AR-PLN-009, AR-PLN-010, AR-PLN-021, AR-PLN-047, AR-PLN-048, AR-PLN-050, AR-PLN-0
 - **Validation CISSS.** Fenêtre d'arrêt de la hotte de médecine nucléaire (ME-119) ; coupures 48 h (AR-DEV-024).
 
 #### 2.3.3 Sous-phase 2.S — face sud
-- **Portée propre.** Chambre à pression négative 307 : démantèlement seulement quand la chambre est inoccupée (ME-056) ; sectionneurs de thermopompes retirés temporairement, circuit fermé (ME-107).
+- **Portée propre.** Chambre à pression négative 307 : démantèlement seulement quand la chambre est inoccupée, conduit prolongé temporairement hors des échafaudages et grillage aviaire pour maintenir le système en fonction (ME-056) ; sectionneurs de thermopompes retirés temporairement, circuit fermé (ME-107).
 - **Préalables.** Confirmation par l'établissement que la chambre 307 est inoccupée (ME-056).
 - **IDs.** ME-056, ME-107 ; ST-037.
+- **Mesures transitoires.** Conduit de la chambre 307 prolongé hors échafaudages, grillage aviaire temporaire (ME-056) ; câblage des sectionneurs laissé au mur, circuit fermé (ME-107).
 - **Validation CISSS.** Inoccupation de la chambre 307 (ME-056) ; classe III « J » (CI-TAB-024, 027, 029).
 
 #### 2.3.4 Sous-phase 2.O — face ouest
@@ -337,13 +338,13 @@ flowchart LR
 
 ### 2.8 Matrice phase × système électromécanique (découpage A)
 
-Légende : **C** coupure (fenêtre écrite) ; **P** provisoire (installation temporaire écrite) ; **M** maintenu sans intervention ; **—** système hors de la zone de la phase ; **?** localisation non écrite (§6). Deux codes séparés par « / » : deux états successifs dans la sous-phase.
+Légende : **C** coupure (fenêtre écrite) ; **P** provisoire (installation temporaire écrite) ; **I** intervention classée sur le système sans coupure écrite (classe PCI et horaire du tableau CISSS) ; **M** maintenu sans intervention ; **—** système hors de la zone de la phase ; **?** localisation non écrite (§6). Deux codes séparés par « → » : états successifs dans la sous-phase.
 
 | Système (IDs) | 0 | 1 | 2.N | 2.E | 2.S | 2.O | 3.N | 3.O | 3.S | 4 |
 |---|---|---|---|---|---|---|---|---|---|---|
 | Gicleurs du quai des ambulances (ME-006 à 008) | M | M | M | M | M | M | M | M | **C** 2 × 2 h, glycol | M |
-| Gicleurs des zones de plafond (ME-009, 011, 012) | M | P protégés | M | M | M | M | M | M | P protégés | M |
-| Alarme incendie (ME-091 à 094) | M | M | M | M | M | M | M + raccord. nouvelle issue | M | M | M + vérification, certificat |
+| Gicleurs des zones de plafond (ME-009 à 012) | M | I gicleur R-34 remplacé, descente relocalisée (ME-010) | M | M | M | M | M | M | P protégés, salle de mécanique chirurgie d'un jour (ME-009) | M |
+| Alarme incendie (ME-091 à 095, 097) | M | M détecteur IRM protégé (ME-097) | M | M | M | M | M + raccordement nouvelle issue (ME-091) | M | M système ; P détecteur de la salle de mécanique chirurgie d'un jour déposé puis relocalisé (ME-095 ; permis du propriétaire, C-12) | M + vérification, certificat |
 | Prise d'air frais du bloc opératoire (ME-042 à 048) | M | M | M | M | M | **P** conduits temp. ; C nuit possible `?` | M | **P** `?` | M | M + mise en service |
 | Glycol du BO en toiture (ME-084) | M | M | M | M | M | P déposé `?` | M | P `?` | M | M |
 | Évents d'autoclaves (ME-075 à 079) | M | M | M | M | M | P `?` | M | **C** nuit / avant 10 h → P relocalisés → M réinstallés | M | M |
@@ -351,31 +352,31 @@ Légende : **C** coupure (fenêtre écrite) ; **P** provisoire (installation tem
 | Câbles chauffants (ME-081 à 083) | M | M | M | M | M | P `?` | M | **C** hors période hivernale | M | M |
 | Air médical (ME-064 à 074) | M | M | M `?` (si la centrale dessert la tour) | M | M | M `?` | **P** prise et HEPA temporaires sur façade ouest, bonbonnes + 1re certification (ME-069) | P → M réinstallation (après revêtement nord) | M | M + 2e certification |
 | Ventilation hémodialyse / laboratoire niv. 200 (ME-049 à 054) | M | M | **P** conduits temp. ; C dimanche hors été | M | M | **P** ; C dimanche hors été | M | M | M | M |
-| Bi-bloc traitement d'eau hémodialyse 203 (ME-087) | M | M | **C** court, hors été | M | M | C `?` | M | M | M | M |
+| Bi-bloc traitement d'eau hémodialyse 203 (ME-087) | M | M | C `?` court, semaine, hors été | C `?` (ligne D5 E-G-V-003 : est) | C `?` | C `?` | M | M | M | M |
 | Chambre 216 (ME-057) | M | M | **P** conduit prolongé | M | M | M | M | M | M | M |
-| Chambre 307 (ME-056) | M | M | M | M | **C** si inoccupée | M | M | M | M | M |
-| Soins intensifs 315 (ME-058) | M | M | M `?` | M `?` | M `?` | M `?` | M | M | M | M |
+| Chambre 307 (ME-056) | M | M | M | M | **C** démantèlement si inoccupée → P conduit prolongé hors échafaudages, grillage aviaire | M | M | M | M | M |
+| Soins intensifs 315 (ME-058) | M | M | I `?` nuit ou jour si aucune chambre occupée (2.N selon D5 N-F-V-009) | I `?` | I `?` | I `?` | M | M | M | M |
 | Hotte de médecine nucléaire (ME-117 à 119) | M | M `?` | M | **C** vendredi–dimanche → P supports | M | M | M | M | M | M |
 | UT-2 chirurgie d'un jour (ME-055) | M | M | M | M | M | M | M | M | **C** rapide nuit/fin de semaine → P filtration | M |
 | Évacuations du laboratoire, V-53 (ME-059 à 061) | M | M | M | M | M | M | **P** conduit temp., filtration | M | M | M |
 | Persiennes PAF non touchées (ME-063) | M | P pré-filtre | P | P | P | P | P | P | P | M |
-| Prises d'air du service alimentaire, SS (CI-TAB-005 ; ME-025, 029) | M | M | **C** classe IV « S » `?` face | ? | ? | ? | M | M | M | M |
+| Prises d'air et registres du service alimentaire, SS (CI-TAB-005 ; ME-025, 029) | M | M | **I** classe IV « S », registre motorisé relocalisé (aucune coupure écrite) `?` face | I `?` | I `?` | I `?` | M | M | M | M |
 | Atelier de menuiserie S17 (ME-062) | M | ? | ? | ? | ? | ? | ? | ? | ? | M |
 | Bi-bloc LG est (ME-086) | M | **C** → P remise en marche | M | C/P `?` | M | M | M | M | M | M |
 | Bi-bloc salle des serveurs RC est (ME-088) | M | **C** court, semaine, hors été | M | M | M | M | M | M | M | M |
 | Bi-bloc GREE sud, urgence (ME-085, 090) | M | M | M | M | M | M | M | M | **C** → P → M sur garde-corps modifié | M |
 | Bi-blocs divers (ME-089, 144) | M | M | M | M | M | M | M | M | M | M |
 | Sectionneurs de thermopompes (ME-107) | M | M | M | M | **C** circuit fermé | C | M | C | C | M |
-| Caméra urgence, détecteur de mouvement, contrôle d'accès (ME-145, 146, 099) | M | M | M | M | M | M | M + KT-1 nouvelle issue | M | **P** relocalisés | M |
+| Caméra urgence, détecteur de mouvement, contrôle d'accès (ME-145, 146, 099) | M | M | M | M | M | M | M + KT-1 nouvelle issue | M | **P** relocalisés — D5 : « Aucun arrêt » pour la caméra d'urgence (Z-06, Z-17) : caméra provisoire à prévoir | M |
 | Enseigne AMBULANCE (ME-147) | M | M | M | M | M | M | M | M | **C** → nouvelle boîte de jonction | M |
-| Lecteurs de carte, luminaires muraux (ME-104 à 106) | M | P déposés | P | P | P | P | P | P | P | M réinstallés |
+| Lecteurs de carte, luminaires muraux (ME-104 à 106) | M | P déposés → M réinstallés après le revêtement | P → M | P → M | P → M | P → M | P → M | P → M | P → M ; perte temporaire du contrôle d'accès aux portes nommées (ME-104) | M |
 | Paratonnerre (ME-100 à 103) | M | P | P | P | P | P | P | P | P | M |
 | Ventilateur de toiture, trappes du soffite (ME-120 à 123) | M | M | P `?` | M | M | P `?` | P `?` | P `?` | M | M |
 | Hotte de la salle communautaire (ME-142) | M | P `?` | M | P `?` | M | M | M | M | M | M |
 | Régulation, panneaux d'urgence (ME-030 à 036) | M | M + entrebarrages | M | M | M | M | M | M | M | mise en route 2 phases |
 | Électricité générale, alimentation d'urgence (Z-09 ; ME-036 ; AR-DEV-215) | M | M | M | M | M | M | M | M | M | M |
 
-Lecture : aucun système marqué « à garder en fonction durant toute la durée » (Z-06) ne subit de coupure autre que celles explicitement écrites (ME-048, 051, 077, 087, 088, 119, 055).
+Lecture : aucun système marqué « à garder en fonction durant toute la durée » (Z-06) ne subit de coupure autre que celles explicitement écrites (ME-048, 051, 055, 077, 087, 088, 119), à une exception près : la caméra d'urgence, « Aucun arrêt » selon D5 (Z-06), est déposée temporairement selon D4 (ME-145) — contradiction interne aux documents WSP à trancher.
 
 ---
 
@@ -447,7 +448,7 @@ Sous-phases absentes du tableau : C.1, C.3, B.1.1, B.2.3 et suivantes ; quatre l
 
 **Ordre interne écrit.** Aucun ; C.2 → C.4 → C.5 (niveaux 2, 3, 4) est l'ordre des numéros `[lecture]`. C.1 et C.3 sont absents : soit la démolition/plexiglas des niveaux 2 à 4 n'est pas classée, soit les lignes manquent (Z-07).
 
-**Préalables.** Travaux par l'extérieur de la tour achevés, face par face, avant le retrait des fenêtres (AR-PLN-040 ; portée `[lecture]`, voir A.2) ; conduits temporaires hémodialyse avant la démolition des façades nord/ouest du niveau 200 (ME-049) ; conduit de médecine nucléaire modifié (ME-118) ; chambres 216/307 (ME-056, 057).
+**Préalables.** Travaux par l'extérieur de la tour achevés, face par face, avant le retrait des fenêtres (AR-PLN-040 ; portée `[lecture]`, voir A.2) ; conduits temporaires hémodialyse avant la démolition des façades nord/ouest du niveau 200 (ME-049) ; conduit de médecine nucléaire modifié (ME-118) ; chambres 216/307 (ME-056, 057) ; mur de la chambre 315 des soins intensifs : intervention seulement si aucune chambre n'est occupée, nuit ou jour (ME-058).
 
 **Contraintes du registre affectées à B-C** (annexe A : C 26 ; C.2 10 ; C.4 5 ; C.5 1) : AR-PLN-046, AR-PLN-050, AR-PLN-051, AR-PLN-057, AR-PLN-071 ; ME-042 à 054, ME-056 à 058, ME-080, ME-084, ME-086, ME-087, ME-096, ME-107, ME-117 à 123, ME-142, ME-144 ; CI-TAB-024 à 029.
 
@@ -495,27 +496,28 @@ Mêmes codes qu'en §2.8. Les colonnes suivent les niveaux ; un système dont le
 | Système (IDs) | 0 | B-A (RC) | B-B (niveau 1, SS) | B-C (tour) | 4 |
 |---|---|---|---|---|---|
 | Gicleurs du quai des ambulances (ME-006 à 008) | M | **C** 2 × 2 h (A.1) | M | M | M |
-| Alarme incendie (ME-091 à 094) | M | M | M + nouvelle issue (B.1.2) | M | vérification, certificat |
+| Alarme incendie (ME-091 à 095, 097) | M | M ; détecteur IRM protégé (ME-097) | M + nouvelle issue (B.1.2) ; P détecteur salle de mécanique chirurgie d'un jour (ME-095) | M | vérification, certificat |
 | Prise d'air frais du bloc opératoire (ME-042 à 048) | M | P `?` | P `?` | **P** (« façade ouest (tour) », ME-045) | mise en service |
 | Évents d'autoclaves, câbles chauffants (ME-075 à 083) | M | P `?` | **P** (sous-sol) ; C nuit / avant 10 h ; câbles hors hiver | M | M |
 | Évents de la chaufferie (ME-080) | M | M `?` | M `?` | M `?` | M |
 | Air médical (ME-064 à 074) | M | M | **P** prise temporaire ouest, HEPA, bonbonnes, 1re certification (localisation tour/basilaire `?`) | M `?` | 2e certification |
-| Ventilation hémodialyse / laboratoire niv. 200 (ME-049 à 054, 087) | M | M | M | **P** conduits temp. ; C dimanche hors été (C.2) | M |
-| Chambres 216 / 307 (ME-057, 056) | M | M | M | P (216, C.2) ; C si inoccupée (307, C.4) | M |
-| Soins intensifs 315 (ME-058) | M | M | M | M (C.4) | M |
+| Ventilation hémodialyse / laboratoire niv. 200 (ME-049 à 054) | M | M | M | **P** conduits temp. ; C dimanche hors été (C.2) | M |
+| Bi-bloc traitement d'eau hémodialyse 203 (ME-087) | M | M | M | C court, semaine, hors été (C.2) | M |
+| Chambres 216 / 307 (ME-057, 056) | M | M | M | P conduit prolongé (216, C.2) ; C si inoccupée → P conduit prolongé, grillage aviaire (307, C.4) | M |
+| Soins intensifs 315 (ME-058) | M | M | M | I nuit ou jour si aucune chambre occupée (C.4) | M |
 | Hotte de médecine nucléaire (ME-117 à 119) | M | M | M | **C** vendredi–dimanche → P | M |
 | UT-2 chirurgie d'un jour (ME-055) | M | M | **C** rapide → P filtration | M | M |
 | Évacuations du laboratoire, V-53 (ME-059 à 061) | M | M | **P** | M | M |
-| Prises d'air du service alimentaire, SS (CI-TAB-005 ; ME-025, 029) | M | M | **C** classe IV « S » (B.1.2) | M | M |
+| Prises d'air et registres du service alimentaire, SS (CI-TAB-005 ; ME-025, 029) | M | M | **I** classe IV « S », registre relocalisé, aucune coupure écrite (B.1.2) | M | M |
 | Atelier de menuiserie S17 (ME-062) | M | M | **C** toute la durée du secteur | M | M |
 | Bi-blocs est (ME-086, 088) | M | **C** serveurs RC, court, semaine, hors été ; LG C → P | M `?` | M `?` | M |
 | Bi-bloc GREE sud, urgence (ME-085, 090) | M | **C** → P → M | M | M | M |
 | Sectionneurs de thermopompes (ME-107) | M | C `?` | C `?` | C `?` | M |
-| Caméra, détecteur, contrôle d'accès (ME-145, 146, 099) | M | **P** (A.1) | KT-1 nouvelle issue (B.1.2) | M | M |
+| Caméra, détecteur, contrôle d'accès (ME-145, 146, 099) | M | **P** (A.1) ; D5 « Aucun arrêt » (Z-06) | KT-1 nouvelle issue (B.1.2) | M | M |
 | Enseigne AMBULANCE (ME-147) | M | **C** (A.1) | M | M | M |
-| Lecteurs de carte, luminaires (ME-104 à 106) | M | P | P | P | M |
+| Lecteurs de carte, luminaires (ME-104 à 106) | M | P → M après revêtement | P → M | P → M | M |
 | Paratonnerre (ME-100 à 103) | M | P | P | P | M |
-| Volets et registres coupe-feu (AR-PLN-056, 057 ; ME-025 à 029) | M | **C** RC classe IV « S » (A.6) | SS et niveau 100 | niveaux 200-400 | M |
+| Volets et registres coupe-feu (AR-PLN-056, 057 ; ME-025 à 029) | M | **I** RC classe IV « S » (A.6), aucune coupure écrite | SS et niveau 100 | niveaux 200-400 | M |
 | Régulation (ME-030 à 036) | M | M | M | M | mise en route |
 
 ---
@@ -586,7 +588,7 @@ Approbations, confirmations ou présences du CISSSGA (chef de projet, service te
 | Coordination des travaux bruyants et des vibrations (secteurs listés) ; seuils établis avec le CISSSGA | Avant les travaux des secteurs concernés | CI-TAB-011, 012, 022, 025, 028 ; AR-DEV-042 ; Z-04 | 1, 2, 3 |
 | Horaires « J », « S », « J/S » des activités classées ; délai de 2 jours ouvrables | Chaque activité du tableau CISSS | CI-TAB-005 à 010, 019 à 021, 024, 027, 029 ; CI-TAB-001 | 1, 2, 3 |
 | Coordination des accès extérieurs : entrée principale, ambulances, cliniques externes, marchandises, roulotte IRM, terrasse, piste cyclable | Avant chaque changement de configuration | AR-PLN-003, 008, 010, 012, 015, 018, 019, 021 ; CI-TAB-013 à 018 ; AR-DEV-139 (3 semaines) | 0, 1, 3.S |
-| Fenêtres de coupure des unités critiques : hémodialyse (dimanche hors été), UT-2 (nuit / fin de semaine), évents d'autoclaves (nuit / avant 10 h), hotte de médecine nucléaire (vendredi–dimanche), PAF BO (nuit), bi-blocs (hors été) | Avant chaque coupure | ME-048, 050, 051, 055, 077, 087, 088, 119 | 1, 2.N, 2.E, 2.O, 3.O, 3.S |
+| Fenêtres de coupure des unités critiques : hémodialyse (dimanche hors été), UT-2 (nuit / fin de semaine), évents d'autoclaves (nuit / avant 10 h), hotte de médecine nucléaire (vendredi–dimanche), PAF BO (nuit ou fin de semaine, sous réserve des gardes), bi-blocs (semaine, hors été), chambre 315 (nuit ou jour si aucune chambre occupée) | Avant chaque coupure | ME-048, 050, 051, 055, 058, 077, 087, 088, 119 | 1, 2, 3.O, 3.S |
 | Occupation des chambres 307 et 216 ; patients à haut risque relocalisés | Avant les travaux de ces faces | ME-056, 057 ; CI-PCI-026 | 2.N, 2.S |
 | Gaz médicaux : attestation avant essais, présence de l'établissement aux inspections, deux certifications, bonbonnes | 3.N (relocalisation), 3.O et phase 4 (prise permanente) | ME-068, 069, 072, 073 | 3.N, 3.O, 4 |
 | Cadenassage et travail sous tension : coordination et permis du représentant du site | Chaque intervention | AR-DEV-082 à 084 | T |
