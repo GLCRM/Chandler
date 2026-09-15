@@ -454,21 +454,24 @@ Sous-phases absentes du tableau : C.1, C.3, B.1.1, B.2.3 et suivantes ; quatre l
 
 ### 3.5 Diagramme de séquence — découpage B (dépendances)
 
-Flèches pleines : dépendance écrite. Pointillées : ordre des numéros de sous-phase `[lecture]`. Les blocs « façades extérieures » sont la partie du travail que le tableau CISSS ne découpe pas et qui doit précéder chaque étape de fenêtres (AR-PLN-040).
+Flèches pleines : dépendance écrite. Pointillées : ordre des numéros de sous-phase `[lecture]` ou absence de dépendance écrite. Les blocs « travaux par l'extérieur » sont la partie du travail que le tableau CISSS ne découpe pas et qui précède le retrait des fenêtres (AR-PLN-040, portée `[lecture]` : voir A.2). La toile d'échafaudage (CI-TAB-004, codée B.1.2 au tableau) précède les travaux extérieurs ; la nouvelle issue et les prises d'air du sous-sol, codées B.1.2 aussi, n'ont aucune dépendance écrite aux façades.
 
 ```mermaid
 flowchart TD
     P0["Phase 0 — préalables"] --> A1["A.1 — accès extérieurs maintenus<br/>CI-TAB-013 à 017"]
-    P0 --> EXT_RC["Façades extérieures du RC achevées<br/>(zones E, H, F, L) — AR-PLN-040"]
-    P0 --> EXT_N1["Façades extérieures du niveau 1 achevées<br/>(zones B, H, D, G) — AR-PLN-040"]
-    P0 --> EXT_T["Façades extérieures de la tour achevées, face par face<br/>(zone A) — AR-PLN-040, ME-049, ME-118"]
+    P0 --> TOILE["Toile sur tous les échafaudages jusqu'à la pose des membranes<br/>CI-TAB-004 (B.1.2)"]
+    TOILE --> EXT_RC["Travaux par l'extérieur du RC achevés<br/>(zones E, H, F, L) — AR-PLN-040, portée [lecture]"]
+    TOILE --> EXT_N1["Travaux par l'extérieur du niveau 1 achevés<br/>(zones B, H, D, G) — AR-PLN-040, portée [lecture]"]
+    TOILE --> EXT_T["Travaux par l'extérieur de la tour achevés, face par face<br/>(zone A) — AR-PLN-040 ; ME-049 avant démolition"]
+    P0 -.-> ISSUE["B.1.2 — nouvelle issue du laboratoire (IV, J)<br/>CI-TAB-019 ; aucune dépendance écrite aux façades"]
+    P0 -.-> PASS["B.1.2 — prises d'air du service alimentaire, SS (IV, S)<br/>CI-TAB-005 ; aucune dépendance écrite aux façades"]
     EXT_RC --> A2["A.2 — plexiglas, tous les locaux RC<br/>CI-TAB-006 (classe I, S)"]
     A2 -->|"AR-PLN-044 : même jour"| A3["A.3 / A.4 — thermos<br/>CI-TAB-007, 008"]
     A3 -.-> A5["A.5 / A.6 — cadrage et toile<br/>CI-TAB-007, 008"]
     P0 --> R22P["ME-108 : conduits EMT relocalisés"] --> A6S["A.6 — structure R22 (classe IV, J/S)<br/>CI-TAB-010"]
     A6V["A.6 — volets coupe-feu RC (classe IV, S)<br/>CI-TAB-009 ; ME-110 entreplafond libéré"]
     A1 -.-> A7["A.7 — terrasse<br/>CI-TAB-018"]
-    EXT_N1 --> B12["B.1.2 — toile d'échafaudage, prises d'air SS,<br/>nouvelle issue (IV, J), thermos 101/104/109 (III, S)"]
+    EXT_N1 --> B12["B.1.2 — thermos 101/104/109 (III, S)<br/>CI-TAB-020"]
     B12 -.-> B13["B.1.3 — thermos 105 à 124 (II, J)"]
     B12 -.-> B21["B.2.1 — cadrage et toile 101/104/109"]
     B13 -.-> B22["B.2.2 — cadrage et toile 105 à 124"]
@@ -479,6 +482,8 @@ flowchart TD
     A6V --> P4
     B21 --> P4
     B22 --> P4
+    ISSUE --> P4
+    PASS --> P4
     C5 --> P4
 ```
 
