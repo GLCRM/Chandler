@@ -1,11 +1,28 @@
 // Impression HTML -> PDF (Chromium via Playwright) + rapport des débordements de boîtes.
 const { chromium } = require('/opt/node22/lib/node_modules/playwright');
 (async () => {
-  const [,, inPath, outPath, reportPath] = process.argv;
+  const [,, inPath, outPath, reportPath, mesuresPath] = process.argv;
   const browser = await chromium.launch();
   const page = await browser.newPage();
   await page.goto('file://' + inPath, { waitUntil: 'load' });
   await page.waitForTimeout(500);
+  // hauteur réelle du contenu de chaque boîte identifiée — sert au calage en deux passes
+  // scrollHeight vaut clientHeight quand la boîte est trop grande : on mesure
+  // donc le bas réel du dernier enfant, ce qui donne la hauteur du contenu
+  // qu'elle déborde ou non.
+  const mesures = await page.evaluate(() => {
+    const m = {};
+    document.querySelectorAll('.box[id]').forEach(el => {
+      const haut = el.getBoundingClientRect().top;
+      let bas = haut;
+      el.querySelectorAll(':scope > *').forEach(n => {
+        const b = n.getBoundingClientRect().bottom;
+        if (b > bas) bas = b;
+      });
+      m[el.id] = Math.ceil(bas - haut) + 11;
+    });
+    return m;
+  });
   const report = await page.evaluate(() => {
     const out = [];
     document.querySelectorAll('.planche').forEach((pl, pi) => {
@@ -26,6 +43,7 @@ const { chromium } = require('/opt/node22/lib/node_modules/playwright');
     return out;
   });
   require('fs').writeFileSync(reportPath || '/dev/null', JSON.stringify(report, null, 1));
+  if (mesuresPath) require('fs').writeFileSync(mesuresPath, JSON.stringify(mesures, null, 1));
   await page.pdf({ path: outPath, preferCSSPageSize: true, printBackground: true });
   await browser.close();
   console.log('ok', outPath, 'débordements :', report.length);
