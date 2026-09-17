@@ -1,54 +1,14 @@
 """Données du cahier de phasage par élévation — Hôpital de Chandler R-657-24.
 
-Repères géométriques calés sur la feuille 202 (élévation F, nord), rendu
-`img/A202_elev_nord.png` = clip page Rect(70, 450, 1600, 930) de la feuille.
-Le calque SVG utilise viewBox "0 0 1530 480" : svg = page − (70, 450).
+La géométrie des quatre élévations (chaînes d'axes, niveaux, clips) est dans
+`elev_geom.py`. Le présent module porte les correspondances de repères, les
+appareils relevés façade par façade, les verrous et la séquence type.
 
-Échelle du dessin : 1:200, soit 70,71 mm par unité de page, vérifiée dans les
-deux sens (chaîne d'axes horizontale et chaîne de niveaux verticale).
+Pour chaque appareil : code de la ligne du tableau ME ; état ; libellé court ;
+repère de la feuille ME ; coordonnée d'axe [lecture] ; cote de niveau en mm ;
+décalage de l'étiquette (dx, dy) ; clé du verrou.
 """
-
-# --- chaîne d'axes de l'élévation nord, de 16 (est) à 1 (ouest) ------------
-# entraxes écrits sur la feuille 202, cumulés depuis l'axe 16
-ENTRAXES = [('16', 0), ('15', 7247), ('14', 7113), ('13', 7010), ('12', 7010), ('11', 7036),
-            ('10', 7417), ("9'", 2692), ('9', 4318), ('8', 7010), ('7', 7010), ('6', 7010),
-            ('5', 7010), ('4', 7010), ('3', 7010), ('2', 7010), ('1', 7010)]
-MM_PAR_UNITE = 70.71
-X_AXE_16 = 12.0            # position svg de l'axe 16
-Y_RDC = 450.0              # position svg du niveau R00 (10 000)
-
-def _cumul():
-    out, c = {}, 0
-    for nom, d in ENTRAXES:
-        c += d; out[nom] = c
-    return out
-CUMUL = _cumul()                      # nom d'axe -> distance en mm depuis l'axe 16
-
-def _mm_axe(n):
-    """Distance en mm depuis l'axe 16 pour un numéro d'axe entier, extrapolée
-    au-delà de l'axe 1 (vers l'ouest) et de l'axe 16 (vers l'est) au pas de 7010 mm."""
-    if 1 <= n <= 16: return CUMUL[str(n)]
-    if n < 1: return CUMUL['1'] + (1 - n) * 7010
-    return CUMUL['16'] - (n - 16) * 7010
-
-def ax(a):
-    """Position svg x d'une coordonnée d'axe continue (16 = est, 1 = ouest).
-
-    Un entier donne l'axe lui-même ; 13,5 tombe à mi-chemin entre les axes 14 et 13.
-    L'axe 9' vaut 9,616 (4318 mm des 7010 mm qui séparent l'axe 9 de l'axe 10)."""
-    if isinstance(a, str): a = 9.616 if a == "9'" else float(a)
-    lo = int(a) if a >= 0 else int(a) - 1
-    f = a - lo
-    m = _mm_axe(lo) + f * (_mm_axe(lo + 1) - _mm_axe(lo))
-    return X_AXE_16 + m / MM_PAR_UNITE
-
-NIVEAUX = [('Dessus parapet', 29820), ('Niveau 500', 28882), ('Niveau 400', 25202),
-           ('Niveau 300', 21559), ('Niveau 200', 17901), ('Niveau 100', 13952),
-           ('Rez-de-chaussée R00', 10000), ('Sous-sol S00', 5442)]
-def niv(mm_abs):
-    """Position svg y d'une cote de niveau, en millimètres absolus du projet."""
-    return Y_RDC - (mm_abs - 10000) / MM_PAR_UNITE
-NIV = {n: niv(v) for n, v in NIVEAUX}
+from elev_geom import GEOMS, NIVEAUX, ETATS, MM_PAR_UNITE  # noqa: F401
 
 # --- correspondance élévation <-> façade ----------------------------------
 # Source écrite : titres des dessins (feuilles 201, 201-A, 202, 203, 204) et
@@ -83,7 +43,7 @@ ETATS = {
 # code D5 ; état ; libellé court ; repère de la feuille ME001(D) ; coordonnée
 # d'axe [lecture] ; cote de niveau du point (mm) ; position de l'étiquette
 # (dx, dy en unités svg depuis le point) ; verrou (clé de VERROUS ou None)
-APPAREILS = [
+APPAREILS = {'nord': [
  ('N-F-P-002', 'coupe',    'Déshumidification, coude', 'non repéré sur ME001(D)', 15.4, 12600, (34, -96), 'V14'),
  ('N-F-P-001', 'maintenu', "Sortie d'arrosage", 'D3 plomberie', 14.55, 10900, (-30, -52), 'V15'),
  ('N-F-E-001', 'coupe',    'Conduit PVC, lampadaires', 'D6 électricité', 13.53, 12400, (-14, -74), 'V10'),
@@ -108,11 +68,11 @@ APPAREILS = [
  ('N-F-E-007', 'coupe',    'Lecteur de carte, porte piéton nord', 'D2 électricité', 1.02, 11100, (-64, -52), 'V12'),
  ('N-F-E-008', 'coupe',    'Clavier, porte de garage nord', 'D10 électricité', 0.86, 10600, (-64, -33), 'V13'),
  ('N-F-GM-001','maintenu', "Prise d'air de la centrale d'air médical", 'non repéré sur ME001(D)', 3.30, 25600, (-4, -30), 'V2'),
-]
+]}
 
 # --- verrous appareil <-> architecture ------------------------------------
 # clé ; appareil ; ce qui doit être fait avant ; étape d'architecture bloquée ; source
-VERROUS = [
+VERROUS = {'nord': [
  ('V1', "Unité de ventilation de l'hémodialyse et du laboratoire (N-F-V-005), axes 8 à 6, niveau 200",
   "Conduits temporaires d'alimentation et de retour en place ; passerelle d'aluminium enlevée par l'entrepreneur général",
   "E2 démolition de l'enveloppe entre les axes 8 et 6 ; modification des brides un conduit à la fois",
@@ -177,7 +137,58 @@ VERROUS = [
   "Verrou inverse : nouvelles trappes fournies par l'entrepreneur général, dimensions et position identiques à l'existant",
   "E4 ; sans elles, plus d'accès au ventilateur, aux purgeurs, au détecteur de fumée de gaine et au volet motorisé",
   "D5 N-F-V-011 ; ME-121, ME-122 ; ME001(D) note D11 ventilation"),
+]}
+
+# --- commentaire de fin de planche, par façade ----------------------------
+COMMENTAIRES = {
+ 'nord': '<div class="txt"><b>Un conflit saisonnier interne à la seule façade nord.</b> Trois lignes du tableau se contredisent sur la saison :<br>'
+  '<span class="cit">N-F-V-005, unité de l\'hémodialyse : « Dimanche seulement, <b>en dehors de la période estivale</b> »</span><br>'
+  '<span class="cit">N-F-P-002, déshumidification : arrêt possible « sauf en période estivale »</span><br>'
+  '<span class="cit">N-F-E-008, clavier de la porte de garage : « <b>En période estivale</b> »</span><br><br>'
+  'La même façade porte donc une intervention qui exige l\'été et deux qui l\'excluent. « Période estivale » n\'étant définie nulle part (Z-10), '
+  'la façade nord ne peut pas être traitée d\'un seul tenant sans arbitrage du CISSS.<br><br>'
+  '<b>Deux verrous inverses.</b> V15 et V16 ne sont pas des appareils qui bloquent l\'architecture, mais l\'architecture qui doit livrer : une alcôve dans le nouveau revêtement pour la sortie d\'arrosage encastrée, '
+  'et de nouvelles trappes d\'accès identiques, sans lesquelles la mécanique du porte-à-faux devient inaccessible.<br><br>'
+  '<b>Ce que WSP doit encore écrire.</b> Le tracé et la forme des conduits temporaires de l\'unité d\'hémodialyse, la séquence de basculement et les fenêtres d\'interruption au-delà de « une journée, un conduit à la fois » (Z-29) ; '
+  'la position de la prise d\'air de la centrale d\'air médical, placée sur l\'élévation F sans qu\'aucun repère ne la montre.</div>',
+}
+
+# --- synthèse des quatre façades ------------------------------------------
+# Comptages établis sur les 93 lignes du tableau ME (data/d5_equipements.json).
+SYNTHESE_CHIFFRES = [
+ ['Façade', 'Lignes', '« Toute la durée des travaux »', 'Fenêtre nommée', 'Non touché (gris)', 'À démanteler (orange)', 'À valider (jaune)'],
+ ['Sud (A)',   '30', '17', '1 — hors période estivale', '6', '2', '0'],
+ ['Ouest (B, C, E, I)', '25', '14', '4 — nuit (3), période estivale (1)', '2', '0', '0'],
+ ['Nord (F)',  '23', '9',  '5 — dimanche hors été, semaine, soir, période estivale', '1', '0', '2'],
+ ['Est (G, H, D)', '15', '7', '4 — semaine hors été (2), vendredi-dimanche, dimanche', '2', '0', '1'],
+ ['<b>Total</b>', '<b>93</b>', '<b>47</b>', '<b>14</b>', '<b>11</b>', '<b>2</b>', '<b>3</b>'],
 ]
+
+# Les six lignes du tableau qui nomment la période estivale, citées mot à mot.
+SAISON = [
+ ['Ligne', 'Façade', 'Période écrite', 'Sens'],
+ ['S-A-V-001', 'Sud', '« En dehors de la période estivale (Quelques jours en été) »', '<b>Contradictoire en elle-même</b>'],
+ ['O-B-V-004', 'Ouest', '« Travailler avec persienne en fonction. En période estivale »', 'Exige l\'été'],
+ ['N-F-V-005', 'Nord', '« Dimanche seulement, en dehors de la période estivale »', 'Exclut l\'été'],
+ ['N-F-E-008', 'Nord', '« En période estivale »', 'Exige l\'été'],
+ ['E-G-V-003', 'Est', '« Semaine, en dehors de la période estivale »', 'Exclut l\'été'],
+ ['E-G-E-006', 'Est', '« Semaine, en dehors de la période estivale »', 'Exclut l\'été'],
+]
+
+SYNTHESE_TXT = (
+ '<div class="txt"><b>Ce que la lecture en élévation ajoute au phasage.</b> Quarante-sept des quatre-vingt-treize lignes du tableau — la moitié — portent la mention '
+ '« toute la durée des travaux » : l\'appareil est simplement hors service pendant les travaux de son secteur. La note 8 de la légende du tableau le précise : '
+ '<span class="cit">« signifie que l\'équipement sera hors-fonction durant les travaux dans le secteur concerné et non durant la période complète du chantier »</span>. '
+ 'C\'est donc la <b>taille du secteur traité d\'un coup</b> qui détermine la durée d\'indisponibilité, et non le calendrier global. Découper une façade en tronçons plus courts '
+ 'réduit directement l\'indisponibilité de chaque porte, de chaque caméra et de chaque évacuation.<br><br>'
+ '<b>La période estivale est contestée sur les quatre façades.</b> Six lignes la nomment : trois l\'exigent, deux l\'excluent, et une se contredit elle-même '
+ '(« en dehors de la période estivale (quelques jours en été) », S-A-V-001). Aucun document ne définit « période estivale » (Z-10). Tant que le CISSS ne l\'a pas définie, '
+ 'aucune façade ne peut être planifiée d\'un seul tenant : c\'est la décision qui commande le plus de choses dans tout le projet.<br><br>'
+ '<b>Ce que le tableau commande sur l\'ordre des façades.</b> Les seules dépendances écrites entre façades sont électromécaniques : la prise d\'air médical temporaire se pose '
+ 'sur la façade ouest pour permettre les travaux de la façade nord (ME-065) et se réinstalle après le revêtement nord (ME-067) ; les conduits temporaires de l\'hémodialyse '
+ 'précèdent la démolition des façades nord et ouest du niveau 200 (ME-049) ; les évents des autoclaves sont relocalisés avant le début de la façade ouest (ME-075) ; '
+ 'le conduit de la hotte de médecine nucléaire est modifié pour permettre la façade est (ME-118). Aucune de ces règles ne vient de l\'architecture : '
+ '<b>c\'est l\'électromécanique qui ordonne les façades</b>, ce que la vue en plan ne montrait pas.</div>')
 
 # --- séquence type de façade (03 §1.3), rappelée pour la lecture ----------
 ETAPES = [

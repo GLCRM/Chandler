@@ -55,33 +55,36 @@ def footer(num, total, sources):
 def txt(x, y, s, size=13, anchor='start', weight='normal', fill='#111'):
     return f'<text x="{x}" y="{y}" text-anchor="{anchor}" style="font-size:{size}px;font-weight:{weight};fill:{fill}">{esc(s)}</text>'
 
-def elevation_nord(width=1540, montrer_etiquettes=True):
-    """Élévation nord rendue (feuille 202, démolition) + calque des appareils."""
-    h = round(width * 480 / 1530)
-    s = [f'<svg viewBox="0 0 1530 480" width="{width}" height="{h}" style="position:absolute;left:0;top:0" xmlns="http://www.w3.org/2000/svg">']
-    # bandes de niveaux
+def elevation(fac, left=40, top=96, width=1540):
+    """Élévation rendue depuis sa feuille d'architecture + calque des appareils.
+
+    Les appareils dont le repère commence par « non repéré » ne sont jamais
+    positionnés : le dessin ne les montre pas."""
+    g = E.GEOMS[fac]
+    h = round(width * g.hauteur / g.largeur)
+    k = width / g.largeur                      # unité svg -> px de la planche
+    s = [f'<svg viewBox="0 0 {g.largeur} {g.hauteur}" width="{width}" height="{h}" style="position:absolute;left:0;top:0" xmlns="http://www.w3.org/2000/svg">']
     for nom, mm in E.NIVEAUX:
-        y = E.niv(mm)
-        if 150 < y < 470:
-            s.append(f'<line x1="0" y1="{y:.1f}" x2="1530" y2="{y:.1f}" stroke="#1565c0" stroke-width="0.7" stroke-dasharray="7,5" opacity="0.5"/>')
-            s.append(txt(4, y - 3, nom, 12, 'start', 'normal', '#1565c0'))
-    if montrer_etiquettes:
-        for code, etat, lib, rep, a, mm, (dx, dy), v in E.APPAREILS:
-            if rep.startswith('non repéré'): continue   # non montré sur l'élévation : jamais positionné
-            x, y = E.ax(a), E.niv(mm)
-            col = E.ETATS[etat][0]
-            lab0 = code if code != '—' else 'hors D5'
-            demi = (7.0 * len(lab0) + 8) / 2
-            lx, ly = min(max(x + dx, demi + 2), 1528 - demi), y + dy
-            s.append(f'<line x1="{lx:.1f}" y1="{ly:.1f}" x2="{x:.1f}" y2="{y:.1f}" stroke="{col}" stroke-width="1.1" stroke-dasharray="2,2"/>')
-            s.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="4" fill="{col}" stroke="#fff" stroke-width="1.2"/>')
-            lab = code if code != '—' else 'hors D5'
-            w = 7.0 * len(lab) + 8
-            s.append(f'<rect x="{lx - w/2:.1f}" y="{ly - 9:.1f}" width="{w:.1f}" height="18" rx="3" fill="{col}" stroke="#fff" stroke-width="1"/>')
-            s.append(txt(lx, ly + 5, lab, 12, 'middle', 'bold', '#fff'))
+        y = g.niv(mm)
+        if 12 < y < g.hauteur - 4:
+            s.append(f'<line x1="0" y1="{y:.1f}" x2="{g.largeur}" y2="{y:.1f}" stroke="#1565c0" stroke-width="{0.8/k:.2f}" stroke-dasharray="7,5" opacity="0.5"/>')
+            s.append(txt(4, y - 3, nom, 12 / k, 'start', 'normal', '#1565c0'))
+    for code, etat, lib, rep, a, mm, (dx, dy), v in E.APPAREILS.get(fac, []):
+        if rep.startswith('non repéré'): continue
+        x, y = g.ax(a), g.niv(mm)
+        col = E.ETATS[etat][0]
+        lab = code if code != '—' else 'hors ME'
+        w = (7.0 * len(lab) + 8) / k
+        hh = 18 / k
+        lx = min(max(x + dx / k, w / 2 + 2), g.largeur - w / 2 - 2)
+        ly = y + dy / k
+        s.append(f'<line x1="{lx:.1f}" y1="{ly:.1f}" x2="{x:.1f}" y2="{y:.1f}" stroke="{col}" stroke-width="{1.1/k:.2f}" stroke-dasharray="2,2"/>')
+        s.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{4/k:.1f}" fill="{col}" stroke="#fff" stroke-width="{1.2/k:.2f}"/>')
+        s.append(f'<rect x="{lx - w/2:.1f}" y="{ly - hh/2:.1f}" width="{w:.1f}" height="{hh:.1f}" rx="{3/k:.1f}" fill="{col}" stroke="#fff" stroke-width="{1/k:.2f}"/>')
+        s.append(txt(lx, ly + 5 / k, lab, 12 / k, 'middle', 'bold', '#fff'))
     s.append('</svg>')
-    return (f'<div class="plan" style="left:40px;top:96px;width:{width}px;height:{h}px">'
-            f'<img src="../img/A202_elev_nord.png" style="position:absolute;left:0;top:0;width:{width}px;height:{h}px">'
+    return (f'<div class="plan" style="left:{left}px;top:{top}px;width:{width}px;height:{h}px">'
+            f'<img src="../img/{g.img}" style="position:absolute;left:0;top:0;width:{width}px;height:{h}px">'
             + ''.join(s) + '</div>'), h
 
 # ------------------------------------------------------------------ planches
@@ -129,62 +132,93 @@ def planche_methode(num, total):
             + tab + d5 + ce + meth
             + footer(num, total, 'D2 feuilles 201, 201-A, 202, 203, 204 (titres des dessins) ; D5 tableau de coordination des équipements électromécaniques, notes générales 1 et 2 et 93 lignes ; analyse/02-contraintes.md.') + '</section>')
 
-def planche_nord_appareils(num, total):
-    plan, h = elevation_nord(1540)
+FACADES = {
+ 'nord':  ("Façade nord",  "Élévation F, feuille 202 — l'est est à gauche, l'ouest à droite",
+           "D2 feuille 202 (élévation F) ; D4 ME001(D) ; D5 lignes N-F-…"),
+ 'est':   ("Façade est",   "Élévation G, feuille 202, et élévations partielles D et H — le sud est à gauche, le nord à droite",
+           "D2 feuilles 202 et 201-A (élévations G, D, H) ; D4 ME002(D), ME003(D) ; D5 lignes E-G-…, E-H-…, E-D-…"),
+ 'sud':   ("Façade sud",   "Élévation A, feuille 201 — l'ouest est à gauche, l'est à droite",
+           "D2 feuille 201 (élévation A) ; D4 ME002(D) ; D5 lignes S-A-…"),
+ 'ouest': ("Façade ouest", "Élévation B, feuille 201, et élévations partielles C, E, I — le nord est à gauche, le sud à droite",
+           "D2 feuilles 201 et 201-A (élévations B, C, E, I) ; D4 ME001(D), ME003(D) ; D5 lignes O-B-…, O-C-…, O-E-…, O-I-…"),
+}
+
+def planche_appareils(fac, num, total):
+    titre, sous, src = FACADES[fac]
+    g = E.GEOMS[fac]
+    app = E.APPAREILS.get(fac, [])
+    plan, h = elevation(fac)
     y = 96 + h + 6
-    leg = ['<div class="cap" style="left:40px;top:%dpx;width:1540px">' % y]
-    leg.append('<b>États :</b> ')
+    nonpos = [a[0] for a in app if a[3].startswith('non repéré')]
+    leg = [f'<div class="cap" style="left:40px;top:{y}px;width:1540px"><b>États :</b> ']
     for k in ('retire', 'deplace', 'coupe', 'maintenu', 'intact'):
         c, lib = E.ETATS[k]
         leg.append(f'<span class="pill" style="background:{c}">{lib}</span> ')
-    leg.append('&nbsp;&nbsp;Chaque pastille porte le code de la ligne du tableau ME. Position le long de l\'élévation relevée sur les repères de ME001(D) — [lecture]. '
-               'Fond : feuille 202, élévation F, démolition. Traits bleus : niveaux de la feuille. L\'est est à gauche, l\'ouest à droite. '
-               '<b>Trois lignes du tableau ME ne sont dessinées nulle part sur l\'élévation</b> et ne sont donc pas positionnées ici : '
-               'N-F-P-002 (déshumidification, « coin nord-est »), N-F-GM-001 (prise d\'air de la centrale d\'air médical) et N-F-V-003 (évacuation V-53), qui n\'a pas de repère propre.</div>')
+    leg.append("&nbsp;&nbsp;Chaque pastille porte le code de la ligne du tableau ME. Position le long de l'élévation relevée sur les repères des feuilles ME — [lecture]. "
+               f"Traits bleus : niveaux de la feuille. Le {g.gauche} est à gauche, le {g.droite} à droite.")
+    if nonpos:
+        leg.append(f" <b>Lignes du tableau que le dessin ne montre nulle part</b>, donc non positionnées ici : {', '.join(nonpos)}.")
+    leg.append('</div>')
+    moitie = (len(app) + 1) // 2
     tab = []
-    app = list(E.APPAREILS)
-    for col, (x0, part) in enumerate([(40, app[:12]), (816, app[12:])]):
-        rows = [['Ligne ME', '&nbsp;', 'Appareil', 'Repère ME001(D)', 'Fenêtre écrite']]
+    for col, (x0, part) in enumerate([(40, app[:moitie]), (816, app[moitie:])]):
+        rows = [['Ligne ME', '&nbsp;', 'Appareil', 'Repère de la feuille ME', 'Fenêtre écrite']]
         for code, etat, lib, rep, a, mm, dxy, v in part:
             r = D5I.get(code)
             per = ' '.join((r['periode'] if r else '').split())[:46] or '—'
             if r and r['arret'].strip().lower().startswith('n/a'): per = 'non touché'
             rows.append([f'<b>{esc(code)}</b>', f'<span class="dot" style="background:{E.ETATS[etat][0]}"></span>',
                          esc(lib), esc(rep), esc(per)])
-        tab.append(box(x0, y + 52, 776, BOT - (y + 52), table(rows, ['84px', '22px', '252px', '158px', '238px']), None, f'n-app{col}'))
-    return ('<section class="planche">' + header(num, total, 'Façade nord — les appareils sur l\'élévation',
-            'Élévation F, feuille 202 ; 23 lignes du tableau ME codées « N-F » plus un appareil repéré sans ligne au tableau')
+        tab.append(box(x0, y + 52, 776, BOT - (y + 52), table(rows, ['84px', '22px', '252px', '158px', '238px']), None, f'{fac}-app{col}'))
+    return ('<section class="planche">' + header(num, total, f'{titre} — les appareils sur l\'élévation',
+            f'{sous} ; {len(app)} appareils relevés')
             + plan + ''.join(leg) + ''.join(tab)
-            + footer(num, total, 'D2 feuille 202 (élévation F, démolition) ; D4 ME001(D) notes de démolition électricité, ventilation, plomberie ; D5 lignes N-F-… ; analyse/02-contraintes.md.') + '</section>')
+            + footer(num, total, src + ' ; analyse/02-contraintes.md.') + '</section>')
 
-def planche_nord_verrous(num, total):
+def planche_verrous(fac, num, total):
+    titre, sous, src = FACADES[fac]
+    ver = E.VERROUS.get(fac, [])
     rows = [['#', 'Appareil et position', 'À faire avant', 'Étape d\'architecture bloquée', 'Sources']]
-    for k, app, av, et, src in E.VERROUS:
-        rows.append([f'<b>{k}</b>', rich(app), rich(av), rich(et), esc(src)])
+    for k, app, av, et, s in ver:
+        rows.append([f'<b>{k}</b>', rich(app), rich(av), rich(et), esc(s)])
     tv = box(40, 96, 1552, 568, table(rows, ['32px', '386px', '356px', '416px', '330px']),
-             'Verrous entre les appareils et les travaux d\'architecture — façade nord', 'n-ver')
-    rows = [['Étape', 'Contenu', '']]
+             f'Verrous entre les appareils et les travaux d\'architecture — {titre.lower()}', f'{fac}-ver')
     seq = ['<div class="seq">']
     for code, nom, cont in E.ETAPES:
         seq.append(f'<span class="st">{code} {esc(nom)}</span> <span class="ar">→</span> ')
     seq.append('</div><div class="seqn">' + ' · '.join(f'<b>{c}</b> {rich(t)}' for c, n, t in E.ETAPES) + '</div>')
-    et = box(40, 680, 940, BOT - 680, ''.join(seq), 'Séquence type d\'une façade (analyse/03-phasage.md §1.2 et §1.3) — le verrou se joue presque toujours entre E1 et E2', 'n-seq')
-    cf = box(996, 680, 596, BOT - 680,
-             '<div class="txt"><b>Un conflit saisonnier interne à la seule façade nord.</b> Deux lignes du tableau ME se contredisent sur la saison :<br>'
-             '<span class="cit">N-F-V-005, unité de l\'hémodialyse : « Dimanche seulement, <b>en dehors de la période estivale</b> »</span><br>'
-             '<span class="cit">N-F-P-002, déshumidification : arrêt possible « sauf en période estivale »</span><br>'
-             '<span class="cit">N-F-E-008, clavier de la porte de garage : « <b>En période estivale</b> »</span><br><br>'
-             'La même façade porte donc une intervention qui exige l\'été et deux qui l\'excluent. « Période estivale » n\'étant définie nulle part (Z-10), '
-             'la façade nord ne peut pas être traitée d\'un seul tenant sans arbitrage du CISSS.<br><br>'
-             '<b>Deux verrous inverses.</b> V15 et V16 ne sont pas des appareils qui bloquent l\'architecture, mais l\'architecture qui doit livrer : une alcôve dans le nouveau revêtement pour la sortie d\'arrosage encastrée, '
-             'et de nouvelles trappes d\'accès identiques, sans lesquelles la mécanique du porte-à-faux devient inaccessible.<br><br>'
-             '<b>Ce que WSP doit encore écrire.</b> Le tracé et la forme des conduits temporaires de l\'unité d\'hémodialyse, la séquence de basculement et les fenêtres d\'interruption au-delà de « une journée, un conduit à la fois » (Z-29) ; '
-             'la position de la prise d\'air de la centrale d\'air médical, placée sur l\'élévation F sans qu\'aucun repère ne la montre.</div>',
-             'Ce que les verrous de la façade nord révèlent', 'n-conf')
-    return ('<section class="planche">' + header(num, total, 'Façade nord — verrous entre appareils et architecture',
+    et = box(40, 680, 940, BOT - 680, ''.join(seq),
+             'Séquence type d\'une façade (analyse/03-phasage.md §1.2 et §1.3) — le verrou se joue presque toujours entre E1 et E2', f'{fac}-seq')
+    cf = box(996, 680, 596, BOT - 680, E.COMMENTAIRES.get(fac, '<div class="txt">—</div>'),
+             f'Ce que les verrous de la {titre.lower()} révèlent', f'{fac}-conf')
+    return ('<section class="planche">' + header(num, total, f'{titre} — verrous entre appareils et architecture',
             'Ce qui doit être déplacé, coupé ou maintenu avant chaque étape de la façade, et ce qui reste bloqué tant qu\'il est en place')
             + tv + et + cf
-            + footer(num, total, 'D5 lignes N-F-… ; D4 ME001(D), ME014 ; analyse/02-contraintes.md ; analyse/03-phasage.md §1.3, §4 K3, §6 ; Z-10, Z-29, C-14.') + '</section>')
+            + footer(num, total, src + ' ; analyse/03-phasage.md §1.3 ; analyse/02-contraintes.md.') + '</section>')
+
+def planche_synthese(num, total):
+    ch = box(40, 96, 940, 218, table(E.SYNTHESE_CHIFFRES, ['176px', '58px', '148px', '246px', '96px', '110px', '82px']),
+             'Les 93 lignes du tableau de coordination, réparties par façade', 'sy-ch')
+    sa = box(40, 326, 940, 232, table(E.SAISON, ['90px', '70px', '450px', '300px'])
+             + '<div class="note">Trois lignes exigent l\'été, deux l\'excluent, une se contredit. « Période estivale » n\'est définie nulle part (Z-10) et le contrat n\'ouvre que deux périodes de novembre à avril (C-14).</div>',
+             'Les six lignes qui nomment la période estivale — sur les quatre façades', 'sy-sa')
+    tx = box(40, 570, 940, BOT - 570, E.SYNTHESE_TXT, 'Ce que l\'exercice apporte au phasage', 'sy-tx')
+    dec = [['Décision à obtenir', 'De qui', 'Ce qu\'elle débloque'],
+           ['Définition de « période estivale »', 'CISSS', 'La planification saisonnière des quatre façades : six lignes du tableau en dépendent, dont trois qui exigent l\'été et deux qui l\'excluent'],
+           ['Sens de la ligne S-A-V-001, « en dehors de la période estivale (quelques jours en été) »', 'CISSS et WSP', 'La façade sud : la ligne se contredit elle-même'],
+           ['Correspondance entre les trois numérotations « phase 1/2/3 » (feuille 010, feuille 002, tableau du CISSS)', 'Architectes et CISSS', 'La planche des zones de chantier par phase, et le rattachement des configurations d\'accès au phasage du bâtiment (C-34)'],
+           ['Tracé et forme des conduits temporaires de l\'unité d\'hémodialyse, séquence de basculement, fenêtres d\'interruption', 'WSP', 'La façade nord entre les axes 8 et 6 — préalable écrit à la démolition (Z-29)'],
+           ['Position de la prise d\'air de la centrale d\'air médical, placée sur l\'élévation F sans repère sur le dessin', 'WSP', 'L\'ordre nord / ouest, qui dépend de l\'emplacement de la prise temporaire (ME-065, ME-067)'],
+           ['Doublon de code N-F-E-006 (deux lignes consécutives portent le même numéro, page 6)', 'WSP', 'La traçabilité du tableau'],
+           ['Longueur des tronçons traités d\'un coup sur chaque façade', 'Entrepreneur, avec le CISSS', 'La durée d\'indisponibilité de chaque appareil marqué « toute la durée des travaux » : 47 lignes sur 93'],
+           ['Plan de situation de la zone clôturée par phase, barrières verrouillables, cloisons anti-poussière', 'Entrepreneur', 'Les zones de chantier, que les plans ne montrent que dans une seule configuration (AR-DEV-171, 190, 148)'],
+           ]
+    dc = box(996, 96, 596, BOT - 96, table(dec, ['300px', '110px', '166px']),
+             'Décisions à obtenir, par destinataire', 'sy-dec')
+    return ('<section class="planche">' + header(num, total, 'Synthèse des quatre façades',
+            'Ce que le regroupement des appareils par façade fait apparaître, et les décisions qui commandent la suite')
+            + ch + sa + tx + dc
+            + footer(num, total, 'D5 tableau de coordination (93 lignes, notes générales 1, 2 et 8) ; analyse/02-contraintes.md ; analyse/03-phasage.md §0.4, §4 K2 et K3 ; Z-10, Z-29, C-14, C-34.') + '</section>')
 
 def planche_chantier(num, total):
     img = ('<div class="plan" style="left:40px;top:96px;width:470px;height:522px">'
@@ -271,7 +305,11 @@ table.t th { background: #e8edf2; }
 def main():
     args = sys.argv[1:]
     out = pathlib.Path(args[args.index('--out') + 1]) if '--out' in args else ROOT / 'plan-phasage-elevations.pdf'
-    pages = [planche_methode, planche_nord_appareils, planche_nord_verrous, planche_chantier]
+    ordre = [f for f in ('nord', 'est', 'sud', 'ouest') if E.APPAREILS.get(f)]
+    pages = [planche_methode]
+    for fac in ordre:
+        pages += [lambda n, t, f=fac: planche_appareils(f, n, t), lambda n, t, f=fac: planche_verrous(f, n, t)]
+    pages += [planche_chantier, planche_synthese]
     total = len(pages)
     body = ''.join(f(i + 1, total) for i, f in enumerate(pages))
     doc = (f'<!doctype html><html lang="fr"><head><meta charset="utf-8">'
