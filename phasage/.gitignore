@@ -1,6 +1,6 @@
 build/*.png
-build/planches.html
+build/*.html
+build/*.json
 build/plan.png
 build/implantation.png
-build/debordements.json
 src/__pycache__/
