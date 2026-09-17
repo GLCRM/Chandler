@@ -89,7 +89,7 @@ SUD = Geom('sud', 'A', '201', 'A201_elev_sud.png', 'num', ('1', 88.0), +1, 437.0
 OUEST = Geom('ouest', 'B', '201', 'A201_elev_ouest.png', 'let', ('A', 268.0), +1, 407.0,
              (380, 1105, 1340, 1600), 'nord', 'sud')
 EST = Geom('est', 'G', '202', 'A202_elev_est.png', 'let', ('I', 120.0), -1, 418.0,
-           (100, 1105, 1160, 1600), 'sud', 'nord')
+           (100, 1105, 1056, 1600), 'sud', 'nord')
 GEOMS = {g.nom: g for g in (NORD, SUD, EST, OUEST)}
 
 # --- états d'un appareil (couleurs du calque) -----------------------------
