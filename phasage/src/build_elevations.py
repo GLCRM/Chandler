@@ -387,6 +387,8 @@ DEFAUTS = [
  ['<b>O-B-V-002</b> : le tableau écrit « persienne à relocaliser », la note dit « à remplacer par une persienne moins large »', 'D5 contre ME001D note D16 ventilation',
   "Nature de l'intervention non fixée"],
  ["Le repère D de la feuille ME003D ne porte aucune ligne d'axe", 'ME003D', "E-D-V-001 n'est pas positionnable sur une élévation"],
+ ["Zone grise d'environ 1,47 x 1,17 m au-dessus de la marquise des ambulances, pointée par une 2e bulle D1 ventilation alors que l'unité décrite est repérée 4 m plus bas",
+  'ME002D ; note 24 de la feuille 201', "Ce que représente cette zone n'est pas déterminable `[à confirmer]` — c'est le tronçon le plus chargé de la façade sud"],
  ["Groupe D4 de l'élévation sud : sept cibles identiques pour six lignes grises", 'ME002D note D4 électricité',
   "Aucune des six lignes n'est identifiable individuellement"],
  ['Numéros de persiennes P-01 à P-18 portés aux dessins sans nomenclature retrouvée dans le jeu', 'ME001D, ME002D, ME003D',

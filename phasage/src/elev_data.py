@@ -56,7 +56,7 @@ APPAREILS = {'nord': [
  ('N-F-V-005', 'coupe',    'Unité hémodialyse : 3 conduits + passerelle', 'D7 vent. — élév. F', 7.13, 17901, (0, -62), 'V1'),
  ('N-F-V-004', 'coupe',    'Ventilateur cloche, stérilisation', 'D6 vent. — élév. F', 8.23, 14200, (-52, 34), 'V7'),
  ('N-F-V-006', 'intact',   'Bi-blocs (8x) non touchés', 'D13 vent. — élév. F', 6.35, 12600, (16, 40), None),
- ('—',         'deplace',  "Sortie d'évent murale de laboratoire", 'D4 plomb. hors tableau', 6.57, 14400, (34, 18), None),
+ ('—',         'deplace',  "Sortie d'évent murale de laboratoire", 'D4 plomb. — élév. F, hors tableau', 6.57, 14400, (34, 18), None),
  ('N-F-V-007', 'coupe',    "Sortie d'air murale, secteur labo", 'D8 vent. — élév. F', 5.67, 14400, (30, -24), 'V5'),
  ('N-F-V-008', 'coupe',    'Persienne RAV P-06, chambre 216', 'D15 vent. — élév. F', 4.63, 21000, (-46, -26), 'V4'),
  ('N-F-V-009', 'maintenu', 'Persienne PAF P-07, soins intensifs 315', 'D9 vent. — élév. F', 4.11, 24600, (-10, -28), 'V3'),

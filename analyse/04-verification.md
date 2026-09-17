@@ -259,6 +259,25 @@ Deux défauts du registre corrigés au passage :
 
 Une première intégration, le même jour, avait rattaché AR-PLN-070 à l'unité d'hémodialyse et créé une contradiction C-41 entre D2 et D4/D5 ; la lecture des bulles de la feuille 703 l'infirme. C-41 a été retirée du registre avant diffusion ; la numérotation des contradictions s'arrête à C-40.
 
+## 11. Complément du 2026-09-17 — lecture par élévation des quatre façades
+
+Exercice conduit à la demande de GLCRM : refaire le phasage en partant des élévations plutôt que du plan, en prenant l'interface entre les appareils électromécaniques et les travaux d'architecture comme axe de lecture. Résultat dans `analyse/05-phasage-elevations.md` et `phasage/plan-phasage-elevations.pdf` (14 planches).
+
+**Couverture.** Les 93 lignes du tableau de coordination D5 sont toutes reprises, chacune rattachée à sa façade, positionnée sur son élévation ou signalée comme non repérable (5 lignes : N-F-P-002, N-F-V-003, N-F-GM-001, E-D-V-001, S-A-E-001). Huit appareils repérés sur les feuilles ME **sans aucune ligne au tableau** ont été ajoutés à l'inventaire. 54 verrous appareil / architecture ont été écrits, chacun rattaché à au moins un appareil et à une étape de la séquence type E1 à E6.
+
+**Ce que l'exercice corrige aux documents antérieurs.**
+
+1. Trois correspondances repère d'élévation ↔ façade que le cahier en plan laissait ouvertes sont tranchées par les titres des dessins : C = ouest partielle, D = est partielle, H = **est** partielle et non « nord partielle ». Deux repères absents du cahier en plan sont ajoutés : J et K. Reporté dans Z-24.
+2. La chaîne d'axes lettrée était fausse : D.1' est à **303 mm** de D.1, non à mi-chemin entre D.1 et D.2. Seule cette répartition redonne le total ±43 459 mm imprimé sur les feuilles 201 et 202.
+3. Les comptes de « fenêtres nommées » par façade du cahier de synthèse sont corrigés (sud 2, ouest 5, nord 4, est 3 ; total 14 inchangé).
+4. Le nombre de lignes du tableau bornées par une saison passe de six à **huit** : sept nomment la période estivale, une la période hivernale (O-B-E-001), qui n'avait pas été relevée.
+
+**Ce que l'exercice ajoute aux zones d'ombre.** Z-10 est complété de la définition de travail GLCRM de la période estivale (mi-juin à mi-août, ±24 juin au 15 août) et du calendrier de travail GLCRM (installation en novembre 2026, travaux de janvier 2027 à décembre 2028), qui ouvre **deux** fenêtres estivales au lieu d'une. Ces deux données sont marquées `[choix]` et restent à confirmer avec le CISSS.
+
+**Défauts documentaires relevés.** Seize, listés au §8 de `05-phasage-elevations.md`. Les plus lourds : l'unité de ventilation de l'hémodialyse est repérée sur l'élévation ouest sans aucune ligne O-B au tableau ; trois travaux réels de la façade sud n'ont aucune ligne ; quatre divergences de rédaction entre le tableau et les notes des dessins ; le doublon de code N-F-E-006.
+
+**Limites de l'exercice.** Les positions des appareils sont des `[lecture]` sur les feuilles ME, avec une précision de l'ordre de ±0,05 axe et ±150 mm. Le report des élévations partielles (C, E, I à l'ouest ; D, H à l'est) sur l'élévation principale de leur façade est un `[choix]` de présentation, la cote d'axe restant une lecture. Deux appariements ne sont pas déterminables sur les feuilles ME et demandent le plan du niveau 100 (O-B-E-002 à 005 ; O-C-V-001). La planche de zones de chantier par phase n'est toujours pas dessinable tant que C-34 n'est pas tranché.
+
 ---
 
 ## Annexe A — Couverture : phase de traitement de chacun des 719 identifiants
