@@ -1,4 +1,4 @@
-"""Assemble les cinq rapports lisibles en un seul PDF lettre portrait.
+"""Assemble les rapports lisibles 01 à 05 et la note 06 en un seul PDF lettre portrait.
 
 Usage : python3 analyse/lisible/outils/construire_pdf.py [dossier de travail]
 Le HTML intermédiaire va dans le dossier de travail (par défaut /tmp) ; seul le
@@ -11,7 +11,7 @@ ICI = pathlib.Path(__file__).resolve().parent
 LISIBLE = ICI.parent
 TRAVAIL = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else pathlib.Path('/tmp')
 SORTIE = LISIBLE / 'R-657-24_Chandler_rapports_lisibles.pdf'
-RAPPORTS = ['01-inventaire', '02-contraintes', '03-phasage', '04-verification', '05-phasage-elevations']
+RAPPORTS = ['01-inventaire', '02-contraintes', '03-phasage', '04-verification', '05-phasage-elevations', '06-plan-phasage-complet']
 
 CSS = """
 @page { size: Letter; }
@@ -44,7 +44,10 @@ strong { color: #111; }
 """
 
 def corps(nom):
-    src = (LISIBLE / f'{nom}.md').read_text(encoding='utf-8')
+    # 01 à 05 : version lisible ; 06 n'existe qu'en une version, dans analyse/
+    chemin = LISIBLE / f'{nom}.md'
+    if not chemin.exists(): chemin = LISIBLE.parent / f'{nom}.md'
+    src = chemin.read_text(encoding='utf-8')
     lignes = src.split('\n')
     titre = lignes[0].lstrip('# ').strip()
     # les deux premières lignes non vides après le titre (projet, version) sont mises en petit
@@ -62,10 +65,10 @@ def main():
                   '<h1>Hôpital de Chandler<br>Réfection de l\'enveloppe</h1>'
                   '<div class="sous">Rapports d\'analyse du dossier d\'appel d\'offres et du phasage — version lisible</div>'
                   '<div class="mention">Version du 5 octobre 2026. Document de travail, non contractuel. '
-                  'Chaque rapport reprend en prose la version de référence du même numéro, qui reste la source pour toute citation, '
-                  'tout tableau complet et toute annexe. Les marqueurs [lecture], [choix] et [à confirmer] distinguent ce qui est lu sur un plan, '
+                  'Les rapports 01 à 05 reprennent en prose la version de référence du même numéro, qui reste la source pour toute citation, '
+                  'tout tableau complet et toute annexe ; la note 06 accompagne le plan de phasage complet de l\'option R. Les marqueurs [lecture], [choix] et [à confirmer] distinguent ce qui est lu sur un plan, '
                   'ce que GLCRM propose et ce que les documents ne fixent pas.</div></div>')
-    sommaire = ('<div class="sommaire"><h2>Les cinq rapports</h2>'
+    sommaire = ('<div class="sommaire"><h2>Les rapports</h2>'
                 + ''.join(f'<div class="item"><b>{html.escape(t)}</b><div>{html.escape(c)}</div></div>' for t, _, c in parts)
                 + '</div>')
     doc = (f'<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Hôpital de Chandler — rapports lisibles</title>'

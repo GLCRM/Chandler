@@ -2,6 +2,7 @@
 
 Hôpital de Chandler, réfection de l'enveloppe · CISSS de la Gaspésie · AOC-077221 · dossier GLCRM R-657-24
 Version lisible du 5 octobre 2026. Les fiches complètes, les matrices phase par système, les diagrammes et la liste des 719 contraintes par phase restent dans la version de référence (03-phasage).
+Mise à jour : le plan de phasage complet (note 06) corrige quatre points de ce rapport — la porte des ambulances, le bi-bloc de la salle d'observation, la persienne de la roulotte d'IRM et le moment de la relocalisation des évents des autoclaves.
 
 ---
 
